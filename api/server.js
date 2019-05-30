@@ -1,6 +1,7 @@
 const express = require("express");
 const helmet = require("helmet");
 const cors = require("cors");
+const db = require('./queries');
 
 //routes
 const userRouter = require("../routes/UserRoute");
