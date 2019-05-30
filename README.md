@@ -8,7 +8,7 @@
 
 #### 1️⃣ Backend delpoyed at [🚫name service here](🚫add URL here) <br>
 
-## 1️⃣ Getting started
+## 1️⃣ Getting started 
 
 To get the server running locally:
 
