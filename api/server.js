@@ -1,16 +1,16 @@
 const express = require('express');
-const cors = require('cors');
 const helmet = require('helmet');
+const cors = require('cors');
 
 const server = express();
 
+server.use(express.json());
 server.use(helmet());
 server.use(cors());
-server.use(express.json());
 
-// *** Default Endpoint ***
+// sanity check
 server.get('/', (req, res) => {
-    res.status(200).json({message: 'Server is UP and Working!' });
-})
+    res.status(200).json('Quizzer API is running');
+});
 
 module.exports = server;
