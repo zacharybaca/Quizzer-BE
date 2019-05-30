@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Logs
 logs
 *.log
@@ -76,6 +75,3 @@ typings/
 
 # DynamoDB Local files
 .dynamodb/
-=======
-node_modules
->>>>>>> 4252ee5722056fdf7c7b838c9b0b4d3f83f8473e
