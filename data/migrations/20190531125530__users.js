@@ -4,6 +4,8 @@ exports.up = function(knex, Promise) {
       .createTable('users', tbl => {
           tbl.increments()
           tbl.string('name').notNullable()
+          tbl.string('username').notNullable();
+          tbl.string('email').notNullable();
       });
   };
   
