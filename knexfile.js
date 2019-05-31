@@ -5,26 +5,29 @@ module.exports = {
   development: {
     client: 'sqlite3',
     connection: {
-      filename: './dev.sqlite3'
-    }
-  },
-
-  staging: {
-    client: 'postgresql',
-    connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
+      filename: './data/quizzer_testdb.db3'
     },
-    pool: {
-      min: 2,
-      max: 10
+    useNullAsDefault: true,
+    seeds: {
+      directory: './data/seeds/'
     },
     migrations: {
-      tableName: 'knex_migrations'
+      directory: './data/migrations'
     }
   },
-
+  testing: {
+    client: 'sqlite3',
+    connection: {
+      filename: './data/',
+    },
+    useNullAsDefault: true,
+    migrations: {
+      directory: './data/migrations',
+    },
+    seeds: {
+      directory: './data/seeds',
+    },
+  },
   production: {
     client: 'postgresql',
     connection: {
