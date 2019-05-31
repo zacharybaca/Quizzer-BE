@@ -1,19 +1,28 @@
-const Pool = require('pg').Pool;
-const pool = new Pool({
-    user: 'me',
+const pg = require('pg');
+
+
+const config = {
+    user: 'postgres',
     host: 'localhost',
-    database: 'api',
-    password: 'password',
-    port: 5432,
-})
+    database: 'Quizzer',
+    password: '',
+    port: 5432
+}
+
+const pool = new pg.Pool(config)
+
+
+
+
 //GET USERS
 const getUsers = (req, res) => {
     pool.query('SELECT * FROM users ORDER BY id ASC', (error, results) => {
         if (error) {
             throw error
         }
-        res.status(200).json(results.rows)
-    })
+        
+    return res.status(200).json(results.rows)
+    });
 }
 //GET USER BY ID
 const getUserById = (req, res) => {
