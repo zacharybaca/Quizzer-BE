@@ -5,13 +5,22 @@ module.exports = {
     client: 'sqlite3',
     useNullAsDefault: true,
     connection: {
-      filename: './data/quizzer.db3',
+      filename: './data/quizzer_testdb.db3'
     },
-    pool: {
-      afterCreate: (conn, done) => {
-        conn.run('PRAGMA foreign_keys = ON', done);
-      },
+    useNullAsDefault: true,
+    seeds: {
+      directory: './data/seeds/'
     },
+    migrations: {
+      directory: './data/migrations'
+    }
+  },
+  testing: {
+    client: 'sqlite3',
+    connection: {
+      filename: './data/',
+    },
+    useNullAsDefault: true,
     migrations: {
       directory: './data/migrations',
     },
@@ -19,12 +28,12 @@ module.exports = {
       directory: './data/seeds',
     },
   },
-
-  test: {
-    client: 'pg',
-    connection:'postgres://localhost/<examples_test>',
-    migrations: {
-      directory: './db/migrations'
+  production: {
+    client: 'postgresql',
+    connection: {
+      database: 'my_db',
+      user:     'username',
+      password: 'password'
     },
     seeds: {
       directory: './db/seeds/test'
