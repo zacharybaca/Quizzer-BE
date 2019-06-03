@@ -1,7 +1,13 @@
-const knex = require('knex');
-const knexConfig = require('../knexfile');
-const db = knex(knexConfig.development);
+// const db = require('../data/dbConfig.js');
 
+const Pool = require('pg').Pool;
+const pool = new Pool({
+    user: 'me',
+    host: 'localhost',
+    database: 'api',
+    password: 'password',
+    port: 5432,
+})
 //GET USERS
 const getUsers = (req, res) => {
      db.query('SELECT * FROM users ORDER BY id ASC', (error, results) => {
