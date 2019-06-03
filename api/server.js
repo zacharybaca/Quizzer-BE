@@ -2,7 +2,7 @@ const express = require('express');
 const helmet = require('helmet');
 const cors = require('cors');
 
-const server = express();
+// const server = express();
 
 require('dotenv').config()
 const path = require('path')
@@ -12,9 +12,9 @@ const http = require('http')
 const passport = require('passport')
 const session = require('express-session')
 const socketio = require('socket.io')
-const authRouter = require('./lib/auth.router')
-const passportInit = require('./lib/passport.init')
-const { SESSION_SECRET, CLIENT_ORIGIN } = require('./config')
+const authRouter = require('../lib/auth.router')
+const passportInit = require('../lib/passport.init')
+const { SESSION_SECRET, CLIENT_ORIGIN } = require('../config')
 const app = express()
 const port = process.env.PORT || 3000;
 
@@ -29,7 +29,7 @@ server.get('/', (req, res) => {
 });
 
 
-// let server
+let server
 
 // If we are in production we are already running in https
 if (process.env.NODE_ENV === 'production') {
@@ -65,7 +65,7 @@ app.use(session({
 
 // Connecting sockets to the server and adding them to the request 
 // so that we can access them later in the controller
-const io = socketio(server)
+// const io = socketio(server)
 app.set('io', io)
 
 // Catch a start up request so that a sleepy Heroku instance can  
