@@ -8,7 +8,7 @@ const createFakeUser = () => ({
   name:faker.name.firstName(), 
   username:faker.internet.userName(), 
   email:faker.internet.email(),
-  role: "paid user"
+  role: "Paid User"
 });
 
 exports.seed = async function(knex, Promise) {
