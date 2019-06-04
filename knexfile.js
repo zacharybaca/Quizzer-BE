@@ -5,7 +5,7 @@ module.exports = {
     client: 'sqlite3',
     useNullAsDefault: true,
     connection: {
-      filename: './data/quizzer_testdb.db3'
+      filename: './data/quizzer.db3'
     },
     useNullAsDefault: true,
     seeds: {
@@ -29,11 +29,10 @@ module.exports = {
     },
   },
   production: {
-    client: 'postgresql',
-    connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
+    client: 'pg',
+    connection: process.env.DATABASE_URL,
+    migrations: {
+      directory: './db/migrations'
     },
     seeds: {
       directory: './db/seeds/test'
