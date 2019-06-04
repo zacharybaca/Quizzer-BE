@@ -35,13 +35,6 @@ module.exports = {
       directory: './db/migrations'
     },
     seeds: {
-<<<<<<< HEAD
-      directory: './db/seeds/production'
-    },
-    useNullAsDefault: true
-  }
-}
-=======
       directory: './db/seeds/test'
     },
     useNullAsDefault: true
@@ -59,4 +52,3 @@ module.exports = {
     useNullAsDefault: true
   }
 }
->>>>>>> c48dc1afb89f4057c1251e5f0b32cc34a53878f7
