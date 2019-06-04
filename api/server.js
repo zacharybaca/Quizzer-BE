@@ -2,7 +2,7 @@ const express = require('express');
 const helmet = require('helmet');
 const cors = require('cors');
 
-// const server = express();
+const server = express();
 
 require('dotenv').config()
 const path = require('path')
@@ -29,7 +29,7 @@ server.get('/', (req, res) => {
 });
 
 
-let server
+// let server
 
 // If we are in production we are already running in https
 if (process.env.NODE_ENV === 'production') {
