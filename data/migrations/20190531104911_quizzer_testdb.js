@@ -9,7 +9,7 @@ exports.up = function(knex, Promise) {
         
         tbl
         .string('entry2', 255)
-        .notNullable()
+        .notNullable() 
         
     })
 };
