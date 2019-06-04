@@ -1,7 +1,7 @@
 // Set your secret key: remember to change this to your live secret key in production
 // See your keys here: https://dashboard.stripe.com/account/apikeys
-const stripe = require('stripe')('sk_test_ZhPRczzPc38M67taa8x14w2N00IesVU1LX');
 
+const stripe = require('stripe')('sk_test_ZhPRczzPc38M67taa8x14w2N00IesVU1LX');
 
 (async () => {
   const plan = await stripe.plans.create({
@@ -13,7 +13,6 @@ const stripe = require('stripe')('sk_test_ZhPRczzPc38M67taa8x14w2N00IesVU1LX');
   });
 })();
 
-
 (async () => {
   const customer = await stripe.customers.create({
     email: 'jenny.rosen@example.com',
@@ -22,12 +21,13 @@ const stripe = require('stripe')('sk_test_ZhPRczzPc38M67taa8x14w2N00IesVU1LX');
 })();
 
 
+(async () => {
+  const subscription = await stripe.subscriptions.create({
+    customer: 'cus_FC5xAjpWFtQcHl',
+    items: [{plan: 'plan_FC5ti529GPCY2Y'}],
+  });
+})();
 
 
-// {
-//   "id": "prod_F50D4B1SnFhG0D",
-//   "object": "product",
 
-//   "name": "Quizzer",
-//   "type": "service",
-// }
+
