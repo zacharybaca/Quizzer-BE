@@ -5,7 +5,7 @@ module.exports = {
     client: 'sqlite3',
     useNullAsDefault: true,
     connection: {
-      filename: './data/quizzer_testdb.db3'
+      filename: './data/quizzer.db3'
     },
     useNullAsDefault: true,
     seeds: {

@@ -34,7 +34,7 @@ router.post('/teacher', (req, res) => {
   })
   .catch(err =>
       res.status(500).json(err));
-});
+});  
 
 router.put('/teacher/:id', (req, res) => {
   dbt.update(req.params.id, req.body)
