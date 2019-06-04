@@ -1,3 +1,5 @@
+// const db = require('../data/dbConfig.js');
+
 const Pool = require("pg").Pool;
 const pool = new Pool({
   user: "me",
