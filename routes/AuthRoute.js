@@ -1,9 +1,13 @@
 const express = require("express");
 const router = express.Router();
+const passport = require("passport");
 
-// test
-router.get("/", (req, res) => {
-  res.status(200).json("Quizzer: Auth Route API is running");
-});
+// google outh
+router.post(
+  "/google",
+  passport.authenticate("googleToken", {
+    session: false
+  })
+);
 
 module.exports = router;
