@@ -1,11 +1,13 @@
  // Set your secret key: remember to change this to your live secret key in production
 // See your keys here: https://dashboard.stripe.com/account/apikeys
+const router = require("express").Router();
 
 const stripe = require('stripe')('sk_test_ZhPRczzPc38M67taa8x14w2N00IesVU1LX');
 
-module.exports = (app) => {
 
-app.post('/api/customer/create', function (req, res, next) {
+
+  
+router.post('/customer/create', function (req, res, next) {
   const token = req.body.token;
     
   if (!token) {
@@ -30,9 +32,9 @@ app.post('/api/customer/create', function (req, res, next) {
     }
    )
   }); // end of create customer
-}
 
 
+module.exports = router;
 
 // (async () => {
 //   const plan = await stripe.plans.create({

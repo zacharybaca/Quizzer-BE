@@ -1,11 +1,11 @@
 const express = require("express");
 const helmet = require("helmet");
 const cors = require("cors");
-const db = require("./queries");
+const db = require("../api/queries");
 const passport = require("passport");
 const passportStrats = require("../passport");
 
-const stripe = require('../routes/stripe')
+const stripe = require('../api/stripe')
 // const port = 3000;
 
 const knex = require("knex");
@@ -13,10 +13,10 @@ const knexConfig = require("../knexfile.js");
 const test = knex(knexConfig.development);
 
 //routes
-const userRouter = require("../routes/UserRoute");
-const quizRouter = require("../routes/QuizRoute");
-const profileRouter = require("../routes/ProfileRoute");
-const authRouter = require("../routes/AuthRoute");
+const userRouter = require("./UserRoute");
+const quizRouter = require("./QuizRoute");
+const profileRouter = require("./ProfileRoute");
+const authRouter = require("./AuthRoute");
 
 const server = express();
 
