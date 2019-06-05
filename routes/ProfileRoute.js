@@ -1,7 +1,19 @@
 const router = require("express").Router();
 
-const dbt = require('../model/TeacherModel');
-const dbs = require('../model/StudentModel');
+// const dbt = require('../model/TeacherModel');
+// const dbs = require('../model/StudentModel');
+
+const knex = require('knex');
+
+const knexConfig = {
+    client: 'sqlite3',
+    useNullAsDefault: true,
+    connection: {
+        filename: './data/quizzer.db3'
+    }
+}
+
+const db = knex(knexConfig);
 
 // test
 router.get("/", (req, res) => {
@@ -18,14 +30,31 @@ router.get('/teacher', (req, res) => {
     res.status(500).json(err)});
 })
 
+// router.get('/teacher/:id', (req, res) => {
+//   dbt.findById(req.params.id)
+//   .then(user => {
+//       res.json(user);
+//   })
+//   .catch(err => 
+//       res.status(500).json(err));
+// });
+
 router.get('/teacher/:id', (req, res) => {
-  dbt.findById(req.params.id)
-  .then(user => {
-      res.json(user);
+  const { id } = req.params;
+  db('student')
+  .where({ id: id })
+  .first()
+  .then(projects => {
+      db('teacher')
+        .where({ student_id: id }).then(actions => {
+       (projects.actions = actions);
+         return res.status(200).json(projects);
+        });
   })
-  .catch(err => 
-      res.status(500).json(err));
-});
+   .catch(err => {
+       res.status(500).json({ Error: "There was an error getting that" })
+   });
+})
 
 router.post('/teacher', (req, res) => {
   dbt.add(req.body)
@@ -66,14 +95,31 @@ router.get('/student', (req, res) => {
     res.status(500).json(err)});
 })
 
+// router.get('/student/:id', (req, res) => {
+//   dbs.findById(req.params.id)
+//   .then(user => {
+//       res.json(user);
+//   })
+//   .catch(err => 
+//       res.status(500).json(err));
+// });
+
 router.get('/student/:id', (req, res) => {
-  dbs.findById(req.params.id)
-  .then(user => {
-      res.json(user);
+  const { id } = req.params;
+  db('teacher')
+  .where({ id: id })
+  .first()
+  .then(projects => {
+      db('student')
+        .where({ teacher_id: id }).then(actions => {
+       (projects.actions = actions);
+         return res.status(200).json(projects);
+        });
   })
-  .catch(err => 
-      res.status(500).json(err));
-});
+   .catch(err => {
+       res.status(500).json({ Error: "There was an error getting that" })
+   });
+})
 
 router.post('/student', (req, res) => {
   dbs.add(req.body)
