@@ -1,59 +1,89 @@
-🚫 Note: All lines that start with 🚫 are instructions and should be deleted before this is posted to your portfolio. This is intended to be a guideline. Feel free to add your own flare to it.
+ The numbers 1️⃣ through 3️⃣ next to each item represent the week that part of the docs needs to be comepleted by.  Make sure to delete the numbers by the end of Labs.
 
-🚫 The numbers 1️⃣ through 3️⃣ next to each item represent the week that part of the docs needs to be comepleted by.  Make sure to delete the numbers by the end of Labs.
-
-🚫 Each student has a required minimum number of meaningful PRs each week per the rubric.  Contributing to docs does NOT count as a PR to meet your weekly requirements.
+ Each student has a required minimum number of meaningful PRs each week per the rubric.  Contributing to docs does NOT count as a PR to meet your weekly requirements.
 
 # API Documentation
 
-#### 1️⃣ Backend delpoyed at [🚫name service here](🚫add URL here) <br>
+#### 1️⃣ Backend delpoyed at Heroku: https://labs13-quizzer.herokuapp.com/ <br>
 
 ## 1️⃣ Getting started 
 
 To get the server running locally:
 
-🚫 adjust these scripts to match your project
+  adjust these scripts to match your project
 
 - Clone this repo
 - **yarn install** to install all required dependencies
 - **yarn server** to start the local server
 - **yarn test** to start server using testing environment
 
-### Backend framework goes here
+### Backend framework goes here: Express & NodeJS, OAuth for security, Stripe for payments
 
-🚫 Why did you choose this framework?
 
--    Point One
--    Point Two
--    Point Three
--    Point Four
+   Why did you choose this framework?
+
+-    Point One: We use NodeJS and Express so that to set up the server and the intended Endpoints 
+-    Point Two: We use OAuth together with Google Authentication for Register or Login of the user 
+-    Point Three: We use Stripe to process payments
+
 
 ## 2️⃣ Endpoints
 
-🚫This is a placeholder, replace the endpoints, access controll, and descriptioin to match your project
 
-#### Organization Routes
+#### AuthRoute Routes
 
-| Method | Endpoint                | Access Control | Description                                  |
-| ------ | ----------------------- | -------------- | -------------------------------------------- |
-| GET    | `/organizations/:orgId` | all users      | Returns the information for an organization. |
-| PUT    | `/organizatoins/:orgId` | owners         | Modify an existing organization.             |
-| DELETE | `/organizations/:orgId` | owners         | Delete an organization.                      |
+| Method | Endpoint                    | Access Control     | Description                                        |
+| ------ | --------------------------- | -------------- | ------------------------------------------------------ |
+| POST    | `/routes/AuthRoute/google` | all users      | Should Authenticate a user using their Google account. |
 
-#### User Routes
+#### ProfileRoute Routes
 
-| Method | Endpoint                | Access Control      | Description                                        |
-| ------ | ----------------------- | ------------------- | -------------------------------------------------- |
-| GET    | `/users/current`        | all users           | Returns info for the logged in user.               |
-| GET    | `/users/org/:userId`    | owners, supervisors | Returns all users for an organization.             |
-| GET    | `/users/:userId`        | owners, supervisors | Returns info for a single user.                    |
-| POST   | `/users/register/owner` | none                | Creates a new user as owner of a new organization. |
-| PUT    | `/users/:userId`        | owners, supervisors |                                                    |
-| DELETE | `/users/:userId`        | owners, supervisors |                                                    |
+| Method | Endpoint                  | Access Control      | Description                                                        |
+| ------ | --------------------------| ------------------- | ------------------------------------------------------------------ |
+| GET    | `/api/profile/`           | supervisors         | Should return the default route indicating Endpoint is working.    |
+| GET    | `/api/profile/teacher`    | owners, supervisors | Should return all available registered Teachers from the database. |
+| GET    | `/api/profile/teacher/:id`| supervisors         | Should return available Teacher by its id from the database.       |
+| POST   | `/api/profile/teacher`    | supervisors         | Should Create a new Teacher which will be stored in the database.  |
+| PUT    | `/api/profile/teacher/:id`| supervisors         | Should Update available Teacher by its id gotten from the database.|
+| DELETE | `/api/profile/teacher/:id`| supervisors         | Should Delete available Teacher by its id gotten from the database.|
+| GET    | `/api/profile/student`    | owners, supervisors | Should return all available registered Students from the database. |
+| GET    | `/api/profile/student/:id`| owners, supervisors | Should return available Student by its id from the database.       |
+| POST   | `/api/profile/student`    | owners, supervisors | Should Create a new Student which will be stored in the database.  |
+| PUT    | `/api/profile/student/:id`| owners, supervisors | Should Update available Student by its id gotten from the database.|
+| DELETE | `/api/profile/student/:id`| owners, supervisors | Should Delete available Student by its id gotten from the database.|
+
+#### QuizRoute Routes
+
+| Method | Endpoint                  | Access Control      | Description                                                        |
+| ------ | --------------------------| ------------------- | ------------------------------------------------------------------ |
+| GET    | `/api/quiz/`              | supervisors         | Should return the default route indicating Endpoint is working.    |
+| GET    | `/api/quiz/quizzes`       | owners, supervisors | Should return all available Quizzes from the database.             |
+| GET    | `/api/quiz/quizzes/:id`   | owners, supervisors | Should return available Quiz by its id from the database.          |
+| POST   | `/api/quiz/create`        | owners, supervisors | Should Create a new Quiz whcih will be stored in the database.     |
+| PUT    | `/api/quiz/quizzes/:id`   | supervisors         | Should Update available Quiz by its id gotten from the database.   |
+| DELETE | `/api/quiz/quizzes/:id`   | owners, supervisors | Should Delete available Quiz by its id gotten from the database.   |
+
+#### UserRoute Routes
+
+ Method | Endpoint                  | Access Control      | Description                                                         |
+| ------ | --------------------------| ------------------- | ------------------------------------------------------------------ |
+| GET    | `/api/users`              | supervisors         | Should return the default route indicating Endpoint is working.    |
+| GET    | `/api/users/:id`          | supervisors         | Should return available User by its id from the database.          |
+| POST   | `/api/users`              | supervisors         | Should Create a new User which will be stored in the database.     |
+| PUT    | `/api/users/:id`          | supervisors         | Should Update available User by its id gotten from the database.   |
+| DELETE | `/api/users/:id`          | supervisors         | Should Delete available User by its id gotten from the database.   |
+
 
 # Data Model
 
-🚫This is just an example. Replace this with your data model
+Throughout the whole data action model's of the project the following model was used:
+
+    find     -- Which supposed to Find the provided entry from the Database
+    findBy   -- Which supposed to Find by id the provided entry from the Database 
+    add      -- Which supposed to Add the provided entry to the Database 
+    findById -- Which supposed to Find by id the provided entry from the Database
+    remove   -- Which supposed to Delete the provided entry from the Database
+    update   -- Which supposed to Update the provided entry to the Database 
 
 #### 2️⃣ ORGANIZATIONS
 
