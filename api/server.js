@@ -1,12 +1,13 @@
 const express = require("express");
 const helmet = require("helmet");
 const cors = require("cors");
-const db = require('./queries');
+const db = require("./queries");
+const passport = require("passport");
+const passportStrats = require("../passport");
 
 const knex = require("knex");
 const knexConfig = require("../knexfile.js");
 const test = knex(knexConfig.development);
-
 
 //routes
 const userRouter = require("../routes/UserRoute");
@@ -19,10 +20,12 @@ const server = express();
 server.use(express.json());
 server.use(helmet());
 server.use(cors());
+server.use(passport.initialize());
+server.use(passport.session());
 
 // sanity check
 server.get("/", (req, res) => {
-  res.status(200).json({message: "Quizzer API is running"});
+  res.status(200).json({ message: "Quizzer API is running" });
 });
 
 server.use("/api/users", userRouter);
@@ -46,16 +49,13 @@ server.get("/api/test", async (req, res) => {
 server.post("/api/test", async (req, res) => {
   if (!req.body.entry || !req.body.entry2) {
     return res.status(400).json({
-      message:
-        "Please include a entry, entry2,and try again."
+      message: "Please include a entry, entry2,and try again."
     });
   }
   try {
     const project = await test("main").insert(req.body);
     if (project) {
-      res
-        .status(200)
-        .json({ message: "Quizz created successfully.", project });
+      res.status(200).json({ message: "Quizz created successfully.", project });
     } else {
       res
         .status(404)
@@ -68,8 +68,5 @@ server.post("/api/test", async (req, res) => {
     });
   }
 });
-
-
-
 
 module.exports = server;
