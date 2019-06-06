@@ -6,8 +6,8 @@ const stripe = require('stripe')('sk_test_ZhPRczzPc38M67taa8x14w2N00IesVU1LX');
 
 
 
-  
-router.post('/customer/create', function (req, res, next) {
+// CUSTOMER  
+router.post('/api/customer/create', function (req, res, next) {
   const token = req.body.token;
     
   if (!token) {
@@ -33,9 +33,12 @@ router.post('/customer/create', function (req, res, next) {
    )  
   }); // end of create customer
 
-  router.post('/customer/subscribe', function (req, res, next) {
-    // Step 1: Grab the plan
-    const {
+
+
+  //SUBSCRIBE
+  router.post('/api/customer/subscribe', function (req, res, next) {
+    // Step 1: Grab the plan and the coupon
+    let {
       plan,
       coupon
     } = req.body;
@@ -43,13 +46,12 @@ router.post('/customer/create', function (req, res, next) {
     // Format (in case they copy/paste coupon & a space appears making it invalid)
     plan = plan.toLowerCase();
     plan = plan.trim();
-
     coupon = coupon.toLowerCase();
     coupon = coupon.trim();
 
 
-    // Step 2: verify the plan that it's valid
-    const plans = ['bronze', 'silver', 'gold'];
+    // Step 2: verify the plan that it's valid, that's its not empty
+    const plans = ['bronze', 'bronze2','silver', 'gold'];
     if (plans.indexOf(plan) == -1) {
       return res.send({
         success: false,
@@ -58,12 +60,12 @@ router.post('/customer/create', function (req, res, next) {
     }
 
     // Step 3: Grab the current customer id and pull out customer id
-    const customerId = '';
+    const customerId = 'cus_FC5xAjpWFtQcHl';
 
     // Step 4: Subscribe.
     const subscription = stripe.subscriptions.create({
       customer: customerId,
-      items: [{plan: 'plan'}],
+      items: [{ plan: 'plan' }],
       coupon: coupon
     });
     res.send({
@@ -72,33 +74,4 @@ router.post('/customer/create', function (req, res, next) {
     })
   })
 
-
-
-  
-
 module.exports = router;
-
-// (async () => {
-//   const plan = await stripe.plans.create({
-//     product: 'prod_FC5qFJ57wYzfW6',
-//     nickname: 'SaaS Quizzer Platform USD',
-//     currency: 'usd',
-//     interval: 'month',
-//     amount: 10000,
-//   });
-// })();
-
-// (async () => {
-//   const customer = await stripe.customers.create({
-//     email: 'jenny.rosen@example.com',
-//     source: 'src_18eYalAHEMiOZZp1l9ZTjSU0',
-//   });
-// })();
-
-
-// (async () => {
-//   const subscription = await stripe.subscriptions.create({
-//     customer: 'cus_FC5xAjpWFtQcHl',
-//     items: [{plan: 'plan_FC5ti529GPCY2Y'}],
-//   });
-// })();
