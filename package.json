@@ -1,4 +1,5 @@
 {
+  "proxy": "http://localhost:8000",
   "name": "quizzer-back-end",
   "version": "1.0.0",
   "description": "Quizzer is an application that teachers can use to access their students and know where their knowledge is lacking by having remediation questions built into the quiz",
@@ -34,6 +35,7 @@
     "passport-google-plus-token": "^2.1.0",
     "passport-jwt": "^4.0.0",
     "pg": "^7.11.0",
+    "react-stripe-elements": "^3.0.0",
     "sqlite3": "^4.0.8",
     "stripe": "^7.1.0"
   }
