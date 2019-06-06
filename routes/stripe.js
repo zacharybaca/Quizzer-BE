@@ -12,7 +12,7 @@ router.post('/customer/create', function (req, res, next) {
     
   if (!token) {
       return res.send({
-        sucess: false,
+        success: false,
         message: 'No token'
       })
     }
@@ -51,7 +51,7 @@ router.post('/customer/create', function (req, res, next) {
 
 
     // Step 2: verify the plan that it's valid, that's its not empty
-    const plans = ['bronze', 'bronze2','silver', 'gold'];
+    const plans = ['bronze','silver', 'gold'];
     if (plans.indexOf(plan) == -1) {
       return res.send({
         success: false,
