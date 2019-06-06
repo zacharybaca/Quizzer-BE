@@ -15,12 +15,16 @@ const knexConfig = {
 
 const db = knex(knexConfig);
 
+//Check -> means that the endpoint has been tested and is in working order
+
 // test
 router.get("/", (req, res) => {
   res.status(200).json("Quizzer: Profile Route API is running");
 });
 
 // Teacher routes
+
+//Check
 router.get('/teacher', (req, res) => {
   dbt.find()
   .then(user => {
@@ -30,6 +34,7 @@ router.get('/teacher', (req, res) => {
     res.status(500).json(err)});
 })
 
+//Check 
 // router.get('/teacher/:id', (req, res) => {
 //   dbt.findById(req.params.id)
 //   .then(user => {
@@ -39,6 +44,7 @@ router.get('/teacher', (req, res) => {
 //       res.status(500).json(err));
 // });
 
+//Check
 router.get('/teacher/:id', (req, res) => {
   const { id } = req.params;
   db('teacher')
@@ -55,7 +61,8 @@ router.get('/teacher/:id', (req, res) => {
           res.status(500).json({ Error: "There was an error getting that" })
       });
    })
-  
+
+//works but not as intended
 // router.get('/student/:id',async (req, res) => {
 //   const { id } = req.params;
 //  try {
@@ -66,6 +73,7 @@ router.get('/teacher/:id', (req, res) => {
 //  }
 // })
 
+//Check
 router.post('/teacher', (req, res) => {
   dbt.add(req.body)
   .then(user => {
@@ -75,6 +83,7 @@ router.post('/teacher', (req, res) => {
       res.status(500).json(err));
 });  
 
+//Check
 router.put('/teacher/:id', (req, res) => {
   dbt.update(req.params.id, req.body)
     .then(users => {
@@ -84,6 +93,7 @@ router.put('/teacher/:id', (req, res) => {
       res.status(500).json(err));
 });
 
+//Check
 router.delete('/teacher/:id', async (req, res) => {
   try {
     const deleteUser = await dbt.remove(req.params.id);
@@ -96,6 +106,8 @@ router.delete('/teacher/:id', async (req, res) => {
 });
 
 // Student Routes
+
+//Check
 router.get('/student', (req, res) => {
   dbs.find()
   .then(user => {
@@ -105,6 +117,7 @@ router.get('/student', (req, res) => {
     res.status(500).json(err)});
 })
 
+//Check
 // router.get('/student/:id', (req, res) => {
 //   dbs.findById(req.params.id)
 //   .then(user => {
@@ -114,6 +127,7 @@ router.get('/student', (req, res) => {
 //       res.status(500).json(err));
 // });
 
+//Check
 router.get('/student/:id', (req, res) => {
   const { id } = req.params;
   db('student')
@@ -131,6 +145,7 @@ router.get('/student/:id', (req, res) => {
       });
    })
 
+//Check
 router.post('/student', (req, res) => {
   dbs.add(req.body)
   .then(user => {
@@ -140,6 +155,7 @@ router.post('/student', (req, res) => {
       res.status(500).json(err));
 });
 
+//Check
 router.put('/student/:id', (req, res) => {
   dbs.update(req.params.id, req.body)
     .then(users => {
@@ -149,6 +165,7 @@ router.put('/student/:id', (req, res) => {
       res.status(500).json(err));
 });
 
+//Check
 router.delete('/student/:id', async (req, res) => {
   try {
     const deleteUser = await dbs.remove(req.params.id);
