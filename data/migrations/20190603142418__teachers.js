@@ -1,7 +1,6 @@
 
 exports.up = function(knex, Promise) {
-    return knex.schema
-      .createTable('teacher', tbl => {
+    return knex.schema.createTable('teacher', tbl => {
           tbl.increments()
           tbl.string('name').notNullable();
           tbl.string('username');
@@ -26,8 +25,8 @@ exports.up = function(knex, Promise) {
           //   .onDelete('RESTRICT')
           //   .onUpdate('CASCADE')  
       });
-  };
+};
   
-  exports.down = function(knex, Promise) {
-    return knex.schema.dropTableIfExists('teacher');
-  };
+exports.down = function(knex, Promise) {
+  return knex.schema.dropTableIfExists('teacher');
+};
