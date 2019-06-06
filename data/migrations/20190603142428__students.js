@@ -7,14 +7,14 @@ exports.up = function(knex, Promise) {
           tbl.string('email').notNullable();
           tbl.string('role').notNullable();
 
-          tbl
-            .integer('teacher_id')
-            .unsigned()
-            .notNullable()
-            .references('id')
-            .inTable('teacher')
-            .onDelete('RESTRICT')
-            .onUpdate('CASCADE')
+          // tbl
+          //   .integer('teacher_id')
+          //   .unsigned()
+          //   .notNullable()
+          //   .references('id')
+          //   .inTable('teacher')
+          //   .onDelete('RESTRICT')
+          //   .onUpdate('CASCADE')
 
           // tbl
           //   .integer('teacher_name')
