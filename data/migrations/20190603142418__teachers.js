@@ -4,7 +4,7 @@ exports.up = function(knex, Promise) {
       .createTable('teacher', tbl => {
           tbl.increments()
           tbl.string('name').notNullable();
-          tbl.string('username').notNullable();
+          tbl.string('username');
           tbl.string('email').notNullable();
           tbl.string('role').notNullable(); 
 
@@ -13,7 +13,7 @@ exports.up = function(knex, Promise) {
             .unsigned()
             .notNullable()
             .references('id')
-            .inTable('students')
+            .inTable('student')
             .onDelete('RESTRICT')
             .onUpdate('CASCADE')
 
@@ -22,7 +22,7 @@ exports.up = function(knex, Promise) {
           //   .unsigned()
           //   .notNullable()
           //   .references('name')
-          //   .inTable('students')
+          //   .inTable('student')
           //   .onDelete('RESTRICT')
           //   .onUpdate('CASCADE')  
       });

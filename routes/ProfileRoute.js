@@ -1,7 +1,7 @@
 const router = require("express").Router();
 
-// const dbt = require('../model/TeacherModel');
-// const dbs = require('../model/StudentModel');
+const dbt = require('../model/TeacherModel');
+const dbs = require('../model/StudentModel');
 
 const knex = require('knex');
 
@@ -41,14 +41,14 @@ router.get('/teacher', (req, res) => {
 
 router.get('/teacher/:id', (req, res) => {
   const { id } = req.params;
-  db('student')
+  db('teacher')
   .where({ id: id })
   .first()
-  .then(projects => {
-      db('teacher')
-        .where({ student_id: id }).then(actions => {
-       (projects.actions = actions);
-         return res.status(200).json(projects);
+  .then(student => {
+      db('student')
+        .where({ teacher_id: id }).then(teacher => {
+       (student.teacher = teacher);
+         return res.status(200).json(student);
         });
   })
    .catch(err => {
@@ -106,20 +106,32 @@ router.get('/student', (req, res) => {
 
 router.get('/student/:id', (req, res) => {
   const { id } = req.params;
-  db('teacher')
+  db('student')
   .where({ id: id })
   .first()
-  .then(projects => {
-      db('student')
-        .where({ teacher_id: id }).then(actions => {
-       (projects.actions = actions);
-         return res.status(200).json(projects);
+  .then(teacher => {
+      db('teacher')
+        .where({ student_id: id }).then(student => {
+       (teacher.student = student);
+         return res.status(200).json(teacher);
         });
   })
    .catch(err => {
        res.status(500).json({ Error: "There was an error getting that" })
    });
 })
+
+// router.get('/student/:id',async (req, res) => {
+//   const { id } = req.params;
+//  try {
+//    const get = await db('student').join('teacher','student.id','teacher.student_id').select("*").where("teacher.id",id).first()
+//   res.status(200).json(get)
+//  } catch (err) {
+//    res.status(500).json({msg:err.message})
+//  }
+// })
+
+
 
 router.post('/student', (req, res) => {
   dbs.add(req.body)

@@ -4,25 +4,25 @@ exports.up = function(knex, Promise) {
       .createTable('student', tbl => {
           tbl.increments()
           tbl.string('name').notNullable();
-          tbl.string('username').notNullable();
+          tbl.string('username');
           tbl.string('email').notNullable();
           tbl.string('role').notNullable(); 
 
           tbl
-          .integer('teacher_id')
-          .unsigned()
-          .notNullable()
-          .references('id')
-          .inTable('students')
-          .onDelete('RESTRICT')
-          .onUpdate('CASCADE')
+            .integer('teacher_id')
+            .unsigned()
+            .notNullable()
+            .references('id')
+            .inTable('teacher')
+            .onDelete('RESTRICT')
+            .onUpdate('CASCADE')
 
       //   tbl
       //     .integer('teacher_name')
       //     .unsigned()
       //     .notNullable()
       //     .references('name')
-      //     .inTable('students')
+      //     .inTable('teacher')
       //     .onDelete('RESTRICT')
       //     .onUpdate('CASCADE')  
       });

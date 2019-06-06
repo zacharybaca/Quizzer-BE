@@ -10,11 +10,11 @@ module.exports = {
 };
 
 function find() {
-    return db('teachers');
+    return db('teacher');
 }
 
 function findBy(filter) {
-    return db('teachers').where(filter);
+    return db('teacher').where(filter);
 }
 
 // async function add(user) {
@@ -30,13 +30,13 @@ function findBy(filter) {
 // }
 
 function remove(id) {
-    return db('teachers')
+    return db('teacher')
     .where('id', id)
     .del();
 }
 
 function update(id, changes) {
-    return db('teachers')
+    return db('teacher')
     .where({ id })
     .update(changes);
 }
