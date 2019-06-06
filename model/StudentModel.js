@@ -10,33 +10,33 @@ module.exports = {
 };
 
 function find() {
-    return db('students');
+    return db('student');
 }
 
 function findBy(filter) {
-    return db('students').where(filter);
+    return db('student').where(filter);
 }
 
 async function add(user) {
-    const [id] = await db('students').insert(user);
+    const [id] = await db('student').insert(user);
 
     return findById(id);
 }
 
 function findById(id) {
-    return db('students')
+    return db('student')
     .where({id})
     .first();
 }
 
 function remove(id) {
-    return db('students')
+    return db('student')
     .where('id', id)
     .del();
 }
 
 function update(id, changes) {
-    return db('students')
+    return db('student')
     .where({ id })
     .update(changes);
 }
