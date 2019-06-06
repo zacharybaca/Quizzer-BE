@@ -30,9 +30,51 @@ router.post('/customer/create', function (req, res, next) {
         })
       }
     }
-   )
+   )  
   }); // end of create customer
 
+  router.post('/customer/subscribe', function (req, res, next) {
+    // Step 1: Grab the plan
+    const {
+      plan,
+      coupon
+    } = req.body;
+
+    // Format (in case they copy/paste coupon & a space appears making it invalid)
+    plan = plan.toLowerCase();
+    plan = plan.trim();
+
+    coupon = coupon.toLowerCase();
+    coupon = coupon.trim();
+
+
+    // Step 2: verify the plan that it's valid
+    const plans = ['bronze', 'silver', 'gold'];
+    if (plans.indexOf(plan) == -1) {
+      return res.send({
+        success: false,
+        message: 'Invalid plan'
+      })
+    }
+
+    // Step 3: Grab the current customer id and pull out customer id
+    const customerId = '';
+
+    // Step 4: Subscribe.
+    const subscription = stripe.subscriptions.create({
+      customer: customerId,
+      items: [{plan: 'plan'}],
+      coupon: coupon
+    });
+    res.send({
+      success: true,
+      message: 'Done'
+    })
+  })
+
+
+
+  
 
 module.exports = router;
 
@@ -60,7 +102,3 @@ module.exports = router;
 //     items: [{plan: 'plan_FC5ti529GPCY2Y'}],
 //   });
 // })();
-
-
-
-

@@ -63,7 +63,7 @@ server.post("/api/test", async (req, res) => {
     } else {
       res
         .status(404)
-        .json({ message: "The qyizz could not be added to the database." });
+        .json({ message: "The quizz could not be added to the database." });
     }
   } catch (error) {
     res.status(500).json({
