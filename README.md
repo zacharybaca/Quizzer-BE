@@ -59,7 +59,7 @@ To get the server running locally:
 | GET    | `/api/quiz/`              | supervisors         | Should return the default route indicating Endpoint is working.    |
 | GET    | `/api/quiz/quizzes`       | owners, supervisors | Should return all available Quizzes from the database.             |
 | GET    | `/api/quiz/quizzes/:id`   | owners, supervisors | Should return available Quiz by its id from the database.          |
-| POST   | `/api/quiz/create`        | owners, supervisors | Should Create a new Quiz whcih will be stored in the database.     |
+| POST   | `/api/quiz/quizzes`        | owners, supervisors | Should Create a new Quiz whcih will be stored in the database.     |
 | PUT    | `/api/quiz/quizzes/:id`   | supervisors         | Should Update available Quiz by its id gotten from the database.   |
 | DELETE | `/api/quiz/quizzes/:id`   | owners, supervisors | Should Delete available Quiz by its id gotten from the database.   |
 
