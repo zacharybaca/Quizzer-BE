@@ -7,7 +7,7 @@ const stripe = require('stripe')('sk_test_ZhPRczzPc38M67taa8x14w2N00IesVU1LX');
 
 
 // CUSTOMER  
-router.post('/api/customer/create', function (req, res, next) {
+router.post('/customer/create', function (req, res, next) {
   const token = req.body.token;
     
   if (!token) {
@@ -36,14 +36,14 @@ router.post('/api/customer/create', function (req, res, next) {
 
 
   //SUBSCRIBE
-  router.post('/api/customer/subscribe', function (req, res, next) {
+  router.post('/customer/subscribe', function (req, res, next) {
     // Step 1: Grab the plan and the coupon
     let {
       plan,
       coupon
     } = req.body;
 
-    // Format (in case they copy/paste coupon & a space appears making it invalid)
+    // Format (in case they copy/paste coupon or mobile phone & a white space appears making it invalid)
     plan = plan.toLowerCase();
     plan = plan.trim();
     coupon = coupon.toLowerCase();
@@ -60,12 +60,12 @@ router.post('/api/customer/create', function (req, res, next) {
     }
 
     // Step 3: Grab the current customer id and pull out customer id
-    const customerId = 'cus_FC5xAjpWFtQcHl';
+    const customerId = 'cus_FCqPDLQDdlqi3r';
 
     // Step 4: Subscribe.
     const subscription = stripe.subscriptions.create({
       customer: customerId,
-      items: [{ plan: 'plan' }],
+      items: [{ plan: plan }],
       coupon: coupon
     });
     res.send({
