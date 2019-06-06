@@ -6,7 +6,7 @@ exports.up = function(knex, Promise) {
         tbl.string('quiz_description').notNullable();
         tbl.string('quiz_question').notNullable();
         tbl.string('quiz_remediation_question').notNullable();
-        tbl.integer('quiz_total_points').notNullable();
+        tbl.integer('quiz_total_points').notNullable
     });
 };
 

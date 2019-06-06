@@ -6,7 +6,7 @@ exports.up = function(knex, Promise) {
           tbl.string('name').notNullable();
           tbl.string('username').notNullable();
           tbl.string('email').notNullable();
-          tbl.string('role').notNullable(); 
+          tbl.string('role').notNullable();
       });
   };
   
