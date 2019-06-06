@@ -6,7 +6,6 @@ const passport = require("passport");
 const passportStrats = require("../passport");
 
 const stripe = require('../api/stripe')
-// const port = 3000;
 
 const knex = require("knex");
 const knexConfig = require("../knexfile.js");
