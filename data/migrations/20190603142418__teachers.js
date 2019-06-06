@@ -1,33 +1,15 @@
 
 exports.up = function(knex, Promise) {
     return knex.schema
-      .createTable('teacher', tbl => {
+      .createTable('teachers', tbl => {
           tbl.increments()
           tbl.string('name').notNullable();
-          tbl.string('username');
+          tbl.string('username').notNullable();
           tbl.string('email').notNullable();
-          tbl.string('role').notNullable(); 
-
-          tbl
-            .integer('student_id')
-            .unsigned()
-            .notNullable()
-            .references('id')
-            .inTable('student')
-            .onDelete('RESTRICT')
-            .onUpdate('CASCADE')
-
-          // tbl
-          //   .integer('student_name')
-          //   .unsigned()
-          //   .notNullable()
-          //   .references('name')
-          //   .inTable('student')
-          //   .onDelete('RESTRICT')
-          //   .onUpdate('CASCADE')  
+          tbl.string('role').notNullable();
       });
   };
   
   exports.down = function(knex, Promise) {
-    return knex.schema.dropTableIfExists('teacher');
+    return knex.schema.dropTableIfExists('teachers');
   };
