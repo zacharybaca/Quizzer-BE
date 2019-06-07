@@ -1,5 +1,4 @@
 exports.up = function(knex, Promise) {
-<<<<<<< HEAD
   return knex.schema.createTable("teachers", tbl => {
     tbl.increments();
     tbl.string("name").notNullable();
@@ -11,35 +10,34 @@ exports.up = function(knex, Promise) {
 
 exports.down = function(knex, Promise) {
   return knex.schema.dropTableIfExists("teachers");
-=======
-    return knex.schema.createTable('teacher', tbl => {
-          tbl.increments()
-          tbl.string('name').notNullable();
-          tbl.string('username');
-          tbl.string('email').notNullable();
-          tbl.string('role').notNullable();
 
-          tbl
-            .integer('student_id')
-            .unsigned()
-            .notNullable()
-            .references('id')
-            .inTable('student')
-            .onDelete('RESTRICT')
-            .onUpdate('CASCADE')
+  return knex.schema.createTable("teacher", tbl => {
+    tbl.increments();
+    tbl.string("name").notNullable();
+    tbl.string("username");
+    tbl.string("email").notNullable();
+    tbl.string("role").notNullable();
 
-          // tbl
-          //   .integer('student_name')
-          //   .unsigned()
-          //   .notNullable()
-          //   .references('name')
-          //   .inTable('student')
-          //   .onDelete('RESTRICT')
-          //   .onUpdate('CASCADE')  
-      });
+    tbl
+      .integer("student_id")
+      .unsigned()
+      .notNullable()
+      .references("id")
+      .inTable("student")
+      .onDelete("RESTRICT")
+      .onUpdate("CASCADE");
+
+    // tbl
+    //   .integer('student_name')
+    //   .unsigned()
+    //   .notNullable()
+    //   .references('name')
+    //   .inTable('student')
+    //   .onDelete('RESTRICT')
+    //   .onUpdate('CASCADE')
+  });
 };
-  
+
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTableIfExists('teacher');
->>>>>>> e1a1426291984dc26cd4bd842485bdf3b5884d44
+  return knex.schema.dropTableIfExists("teacher");
 };

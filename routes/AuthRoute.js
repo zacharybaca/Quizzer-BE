@@ -5,7 +5,6 @@ const db = require("../model/TeacherModel");
 const { authenticate } = require("../auth/authenticate");
 
 router.post("/login", authenticate, async (req, res) => {
-  console.log(req.body.Zi.access_token);
   try {
     const { email, name } = req.body.profileObj;
 
@@ -14,10 +13,13 @@ router.post("/login", authenticate, async (req, res) => {
       name
     };
 
+    const ifUserExist = await db.findBy({ email });
+    if (ifUserExist) {
+      return res.status(200).json(ifUserExist);
+    }
     console.log(user);
-
     const addUser = await db.add(user);
-    console.log(addUser);
+
     res.status(201).json(addUser);
   } catch (err) {
     console.log(err.message);
