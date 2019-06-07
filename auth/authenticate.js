@@ -10,8 +10,15 @@ module.exports = {
   authenticate
 };
 
-function authenticate(req, res, next) {
-  const token = req.get("Authorization");
-  axios(`https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=${token}`);
-  next();
+async function authenticate(req, res, next) {
+  // verfiy token
+  try {
+    const token = req.get("Authorization");
+    const auth = await axios(
+      `https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=${token}`
+    );
+    next();
+  } catch (err) {
+    res.status(401).json({ msg: "token not valid" });
+  }
 }
