@@ -1,29 +1,10 @@
-require('dotenv').config();
-const knex = require('knex');
-const db = require('../dbConfig.js');
-const faker = require('faker');
-
-const createFakeUser = () => ({
-
-  name:faker.name.firstName(), 
-  username:faker.internet.userName(), 
-  email:faker.internet.email(),
-  role: "Paid User"
-});
-
-exports.seed = async function(knex, Promise) {
-      // Insert Users
-      const fakeUsers = [];
-      const desiredFakeUsers = process.env.USER_COUNT || 50;
-      console.log(desiredFakeUsers)
-       return knex('users').truncate().then(function(){
-        
-        for (let i = 1; i < desiredFakeUsers; i++) {
-          fakeUsers.push(createFakeUser());
-          
-        }
-        
-        return db('users')
-        .insert(fakeUsers)
-      }) 
+exports.seed = function(knex, Promise) {
+  // Inserts seed entries
+  return knex('users').insert([
+    {name: 'Michael', username: 'Michael_Lewis', email: 'MLewis@gmail.com', role: 'Teacher'},
+    {name: 'Agnes', username: 'Agnes_Thomas', email: 'AThomas@gmail.com', role: 'Student'},
+    {name: 'Ruth', username: 'Ruth_Richards', email: 'RRichards@gmail.com', role: 'Teacher'},
+    {name: 'Bennie', username: 'Bennie_Hearse', email: 'BHearse@gmail.com', role: 'Student'},
+    {name: 'Louisa', username: 'Louisa_Kenny', email: 'LKenny@gmail.com', role: 'Teacher'},
+  ]);
 };
