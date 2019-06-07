@@ -13,11 +13,15 @@ router.post("/login", authenticate, async (req, res) => {
       name
     };
 
-    const ifUserExist = await db.findBy({ email });
-    if (ifUserExist) {
+    console.log(user);
+    const ifUserExist = await db.findBy(user);
+    console.log(ifUserExist);
+
+    if (ifUserExist.length > 0) {
+      console.log("user exists");
       return res.status(200).json(ifUserExist);
     }
-    console.log(user);
+
     const addUser = await db.add(user);
 
     res.status(201).json(addUser);
