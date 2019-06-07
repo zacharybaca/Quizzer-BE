@@ -9,3 +9,9 @@ exports.seed = function(knex, Promise) {
     {name: 'Samuel', username: 'Samuel2', email: 'Samuel@gmail.com', role: 'Teacher', student_id: '5'},
   ]);
 };
+
+// {name: 'Lucy', username: 'Lucy2', email: 'Lucy@gmail.com', role: 'Teacher'},
+// {name: 'Johnny', username: 'Johnny2', email: 'Johnny@gmail.com', role: 'Teacher'},
+// {name: 'Phillip', username: 'Phillip2', email: 'Phillip@gmail.com', role: 'Teacher'},
+// {name: 'Agnes', username: 'Agnes2', email: 'Agnes@gmail.com', role: 'Teacher'},
+// {name: 'Samuel', username: 'Samuel2', email: 'Samuel@gmail.com', role: 'Teacher'},

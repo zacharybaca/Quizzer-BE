@@ -11,7 +11,7 @@ exports.up = function(knex, Promise) {
             .integer('student_id')
             .unsigned()
             .notNullable()
-            .references('id')
+            tbl.foreign('student_id').references('student_id')
             .inTable('student')
             .onDelete('RESTRICT')
             .onUpdate('CASCADE')

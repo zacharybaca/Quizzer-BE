@@ -35,32 +35,32 @@ router.get('/teacher', (req, res) => {
 })
 
 //Check 
-// router.get('/teacher/:id', (req, res) => {
-//   dbt.findById(req.params.id)
-//   .then(user => {
-//       res.json(user);
-//   })
-//   .catch(err => 
-//       res.status(500).json(err));
-// });
+router.get('/teacher/:id', (req, res) => {
+  dbt.findById(req.params.id)
+  .then(user => {
+      res.json(user);
+  })
+  .catch(err => 
+      res.status(500).json(err));
+});
 
 //Check
-router.get('/teacher/:id', (req, res) => {
-  const { id } = req.params;
-  db('teacher')
-  .where({ id: id })
-  .first()
-  .then(student => {
-      db('student')
-        .where({ teacher_id: id }).then(teacher => {
-       (student.teacher = teacher);
-         return res.status(200).json(student);
-        });
-      })
-        .catch(err => {
-          res.status(500).json({ Error: "There was an error getting that" })
-      });
-   })
+// router.get('/teacher/:id', (req, res) => {
+//   const { id } = req.params;
+//   db('teacher')
+//   .where({ id: id })
+//   .first()
+//   .then(student => {
+//       db('student')
+//         .where({ teacher_id: id }).then(teacher => {
+//        (student.teacher = teacher);
+//          return res.status(200).json(student);
+//         });
+//       })
+//         .catch(err => {
+//           res.status(500).json({ Error: "There was an error getting that" })
+//       });
+//    })
 
 //works but not as intended
 // router.get('/student/:id',async (req, res) => {
@@ -118,32 +118,32 @@ router.get('/student', (req, res) => {
 })
 
 //Check
-// router.get('/student/:id', (req, res) => {
-//   dbs.findById(req.params.id)
-//   .then(user => {
-//       res.json(user);
-//   })
-//   .catch(err => 
-//       res.status(500).json(err));
-// });
+router.get('/student/:id', (req, res) => {
+  dbs.findById(req.params.id)
+  .then(user => {
+      res.json(user);
+  })
+  .catch(err => 
+      res.status(500).json(err));
+});
 
 //Check
-router.get('/student/:id', (req, res) => {
-  const { id } = req.params;
-  db('student')
-  .where({ id: id })
-  .first()
-  .then(teacher => {
-      db('teacher')
-        .where({ student_id: id }).then(student => {
-       (teacher.student = student);
-         return res.status(200).json(teacher);
-        });
-      })
-      .catch(err => {
-          res.status(500).json({ Error: "There was an error getting that" })
-      });
-   })
+// router.get('/student/:id', (req, res) => {
+//   const { id } = req.params;
+//   db('student')
+//   .where({ id: id })
+//   .first()
+//   .then(teacher => {
+//       db('teacher')
+//         .where({ student_id: id }).then(student => {
+//        (teacher.student = student);
+//          return res.status(200).json(teacher);
+//         });
+//       })
+//       .catch(err => {
+//           res.status(500).json({ Error: "There was an error getting that" })
+//       });
+//    })
 
 //Check
 router.post('/student', (req, res) => {
