@@ -11,7 +11,7 @@ const knexConfig = {
     connection: {
         filename: './data/quizzer.db3'
     }
-}
+} 
 
 const db = knex(knexConfig);
 
