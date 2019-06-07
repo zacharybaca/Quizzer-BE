@@ -5,6 +5,8 @@ const db = require("./queries");
 const passport = require("passport");
 const passportStrats = require("../passport");
 
+const stripe = require('../routes/stripe')
+
 const knex = require("knex");
 const knexConfig = require("../knexfile.js");
 const test = knex(knexConfig.development);
@@ -23,6 +25,7 @@ server.use(cors());
 server.use(passport.initialize());
 server.use(passport.session());
 
+
 // sanity check
 server.get("/", (req, res) => {
   res.status(200).json({ message: "Quizzer API is running" });
@@ -32,7 +35,7 @@ server.use("/api/users", userRouter);
 server.use("/api/quiz", quizRouter);
 server.use("/api/profile", profileRouter);
 server.use("/api/auth", authRouter);
-
+server.use("/api/stripe", stripe);
 // Test Endpoints here:
 server.get("/api/test", async (req, res) => {
   try {
