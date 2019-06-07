@@ -19,9 +19,9 @@ const db = knex(knexConfig);
 
 // test
 router.get("/", (req, res) => {
-  res.status(200).json("Quizzer: Profile Route API is running");
+  res.status(200).json({message: "Quizzer: Profile Route API is running" });
 });
-
+ 
 // Teacher routes
 
 //Check
