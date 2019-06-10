@@ -44,35 +44,45 @@ To get the server running locally:
 | GET    | `/api/profile/teacher`    | owners, supervisors | Should return all available registered Teachers from the database. |
 | GET    | `/api/profile/teacher/:id`| supervisors         | Should return available Teacher by its id from the database.       |
 | POST   | `/api/profile/teacher`    | supervisors         | Should Create a new Teacher which will be stored in the database.  |
-| PUT    | `/api/profile/teacher/:id`| supervisors         | Should Update available Teacher by its id gotten from the database.|
-| DELETE | `/api/profile/teacher/:id`| supervisors         | Should Delete available Teacher by its id gotten from the database.|
+| PUT    | `/api/profile/teacher/:id`| supervisors         | Should Update available Teacher by its id taken from the database. |
+| DELETE | `/api/profile/teacher/:id`| supervisors         | Should Delete available Teacher by its id taken from the database. |
 | GET    | `/api/profile/student`    | owners, supervisors | Should return all available registered Students from the database. |
 | GET    | `/api/profile/student/:id`| owners, supervisors | Should return available Student by its id from the database.       |
 | POST   | `/api/profile/student`    | owners, supervisors | Should Create a new Student which will be stored in the database.  |
-| PUT    | `/api/profile/student/:id`| owners, supervisors | Should Update available Student by its id gotten from the database.|
-| DELETE | `/api/profile/student/:id`| owners, supervisors | Should Delete available Student by its id gotten from the database.|
+| PUT    | `/api/profile/student/:id`| owners, supervisors | Should Update available Student by its id taken from the database. |
+| DELETE | `/api/profile/student/:id`| owners, supervisors | Should Delete available Student by its id taken from the database. |
 
 #### QuizRoute Routes
 
-| Method | Endpoint                  | Access Control      | Description                                                        |
-| ------ | --------------------------| ------------------- | ------------------------------------------------------------------ |
-| GET    | `/api/quiz/`              | supervisors         | Should return the default route indicating Endpoint is working.    |
-| GET    | `/api/quiz/quizzes`       | owners, supervisors | Should return all available Quizzes from the database.             |
-| GET    | `/api/quiz/quizzes/:id`   | owners, supervisors | Should return available Quiz by its id from the database.          |
-| POST   | `/api/quiz/quizzes`        | owners, supervisors | Should Create a new Quiz whcih will be stored in the database.     |
-| PUT    | `/api/quiz/quizzes/:id`   | supervisors         | Should Update available Quiz by its id gotten from the database.   |
-| DELETE | `/api/quiz/quizzes/:id`   | owners, supervisors | Should Delete available Quiz by its id gotten from the database.   |
+| Method | Endpoint                  | Access Control      | Description                                                       |
+| ------ | --------------------------| ------------------- | ------------------------------------------------------------------|
+| GET    | `/api/quiz/`              | supervisors         | Should return the default route indicating Endpoint is working.   |
+| GET    | `/api/quiz/quizzes`       | owners, supervisors | Should return all available Quizzes from the database.            |
+| GET    | `/api/quiz/quizzes/:id`   | owners, supervisors | Should return available Quiz by its id from the database.         |
+| POST   | `/api/quiz/quizzes`       | owners, supervisors | Should Create a new Quiz which will be stored in the database.    |
+| PUT    | `/api/quiz/quizzes/:id`   | supervisors         | Should Update available Quiz by its id taken from the database.   |
+| DELETE | `/api/quiz/quizzes/:id`   | owners, supervisors | Should Delete available Quiz by its id taken from the database.   |
 
 #### UserRoute Routes
 
- Method | Endpoint                  | Access Control      | Description                                                         |
+ Method | Endpoint                   | Access Control      | Description                                                        |
 | ------ | --------------------------| ------------------- | ------------------------------------------------------------------ |
 | GET    | `/api/users`              | supervisors         | Should return the default route indicating Endpoint is working.    |
 | GET    | `/api/users/:id`          | supervisors         | Should return available User by its id from the database.          |
 | POST   | `/api/users`              | supervisors         | Should Create a new User which will be stored in the database.     |
-| PUT    | `/api/users/:id`          | supervisors         | Should Update available User by its id gotten from the database.   |
-| DELETE | `/api/users/:id`          | supervisors         | Should Delete available User by its id gotten from the database.   |
+| PUT    | `/api/users/:id`          | supervisors         | Should Update available User by its id taken from the database.    |
+| DELETE | `/api/users/:id`          | supervisors         | Should Delete available User by its id taken from the database.    |
 
+#### QuestionRoute Routes
+
+| Method | Endpoint                    | Access Control      | Description                                                     |
+| ------ | ----------------------------| ------------------- | ----------------------------------------------------------------|
+| GET    | `/api/quest/`               | supervisors         | Should return the default route indicating Endpoint is working. |
+| GET    | `/api/quest/question`       | owners, supervisors | Should return all available questions from the database.        |
+| GET    | `/api/quest/question/:id`   | owners, supervisors | Should return available question by its id from the database.   |
+| POST   | `/api/quest/question`       | owners, supervisors | Should Create a new question and store it in the database.      |
+| PUT    | `/api/quest/question/:id`   | supervisors         | Should Update available question by its id from the database.   |
+| DELETE | `/api/quest/question/:id`   | owners, supervisors | Should Delete available question by its id from the database.   |
 
 # Data Model
 
