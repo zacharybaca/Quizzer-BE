@@ -16,6 +16,7 @@ const userRouter = require("../routes/UserRoute");
 const quizRouter = require("../routes/QuizRoute");
 const profileRouter = require("../routes/ProfileRoute");
 const authRouter = require("../routes/AuthRoute");
+const questionRouter = require("../routes/QuestionRoute");
 
 const server = express();
 
@@ -36,6 +37,8 @@ server.use("/api/quiz", quizRouter);
 server.use("/api/profile", profileRouter);
 server.use("/api/auth", authRouter);
 server.use("/api/stripe", stripe);
+server.use("/api/quest", questionRouter);
+
 // Test Endpoints here:
 server.get("/api/test", async (req, res) => {
   try {

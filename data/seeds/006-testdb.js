@@ -1,5 +1,5 @@
 exports.seed = function(knex, Promise) {
-  return knex("main").insert([
+  return knex("test").insert([
     {
       entry: "test value1",
       entry2: "test value2"
