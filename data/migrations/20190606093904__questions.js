@@ -11,7 +11,7 @@ exports.up = function(knex, Promise) {
     tbl.string('correct_answer').notNullable();
     tbl.integer('points');
 
-    tbl.unique()
+    tbl
       .integer('quiz_id')
       .unsigned()
       .notNullable()

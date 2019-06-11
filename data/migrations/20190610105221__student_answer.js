@@ -3,7 +3,7 @@ exports.up = function(knex, Promise) {
     tbl.increments().unique();
     tbl.string('student_answer').notNullable();
 
-    tbl.unique()
+    tbl
       .integer('student_id')
       .unsigned()
       .notNullable()
@@ -12,7 +12,7 @@ exports.up = function(knex, Promise) {
       .onDelete('RESTRICT')
       .onUpdate('CASCADE') 
     
-    tbl.unique()
+    tbl
       .integer('question_id')
       .unsigned()
       .notNullable()
@@ -21,7 +21,7 @@ exports.up = function(knex, Promise) {
       .onDelete('RESTRICT')
       .onUpdate('CASCADE')
 
-    tbl.unique()
+    tbl
       .integer('quiz_id')
       .unsigned()
       .notNullable()
@@ -30,7 +30,7 @@ exports.up = function(knex, Promise) {
       .onDelete('RESTRICT')
       .onUpdate('CASCADE')
 
-    tbl.unique()
+    tbl
       .integer('correct_answer')
       .unsigned()
       .notNullable()

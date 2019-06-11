@@ -6,7 +6,7 @@ exports.up = function(knex, Promise) {
     tbl.string("email").notNullable();
     tbl.string("role");
 
-    tbl.unique()
+    tbl
       .integer('user_id')
       .unsigned()
       .notNullable()
