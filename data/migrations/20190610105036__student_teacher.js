@@ -1,11 +1,10 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('student_teacher', tbl => {
-    tbl.increments().unique();
+    tbl.increments();
 
     tbl
       .integer('teacher_id')
       .unsigned()
-      .notNullable()
       .references('id')
       .inTable('teachers')
       .onDelete('RESTRICT')
@@ -14,7 +13,6 @@ exports.up = function(knex, Promise) {
     tbl
       .integer('student_id')
       .unsigned()
-      .notNullable()
       .references('id')
       .inTable('students')
       .onDelete('RESTRICT')

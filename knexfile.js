@@ -1,4 +1,7 @@
 // Update with your config settings.
+require('dotenv').config()
+const pg = require('pg')
+pg.defaults.ssl = true
 
 module.exports = {
   development: {
@@ -7,7 +10,6 @@ module.exports = {
     connection: {
       filename: './data/quizzer.db3'
     },
-    useNullAsDefault: true,
     seeds: {
       directory: './data/seeds/'
     },
