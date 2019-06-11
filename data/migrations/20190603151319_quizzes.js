@@ -1,17 +1,19 @@
 exports.up = function(knex, Promise) {
-  return knex.schema
-    .createTable('quiz', tbl => {
-        tbl.increments()
-        tbl.string('category').notNullable();
-        tbl.string('type').notNullable();
-        tbl.string('difficulty').notNullable();
-        tbl.string('question').notNullable();
-        tbl.string('correct_answer').notNullable();
-        tbl.string('incorrect_answers');
-        tbl.integer('points').notNullable();
-    });
+  return knex.schema.createTable('quizzes', tbl => {
+    tbl.increments().unique();
+    tbl.integer('class_average')
+
+    tbl
+      .integer('teacher_id')
+      .unsigned()
+      .notNullable()
+      .references('id')
+      .inTable('teachers')
+      .onDelete('RESTRICT')
+      .onUpdate('CASCADE')
+  });
 };
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTableIfExists('quiz');
+  return knex.schema.dropTableIfExists('quizzes');
 };

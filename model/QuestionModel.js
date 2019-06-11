@@ -6,37 +6,37 @@ module.exports = {
     add,
     findById,
     remove,
-    update,
+    update
 };
 
 function find() {
-    return db('students');
+    return db('questions');
 }
 
 function findBy(filter) {
-    return db('students').where(filter);
+    return db('questions').where(filter);
 }
 
-async function add(user) {
-    const [id] = await db('students').insert(user);
+async function add(data) {
+    const [id] = await db('questions').insert(data);
 
     return findById(id);
 }
 
 function findById(id) {
-    return db('students')
+    return db('questions')
     .where({id})
     .first();
 }
 
 function update(id, changes) {
-    return db('students')
+    return db('questions')
     .where({ id })
     .update(changes);
 }
 
 function remove(id) {
-    return db('students')
+    return db('questions')
     .where('id', id)
     .del();
 }
