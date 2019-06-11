@@ -34,6 +34,7 @@ exports.up = function(knex, Promise) {
       .integer('correct_answer')
       .unsigned()
       .notNullable()
+      .unique('correct_answer')
       .references('correct_answer')
       .inTable('questions')
       .onDelete('RESTRICT')
