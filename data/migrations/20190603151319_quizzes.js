@@ -1,6 +1,6 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('quizzes', tbl => {
-    tbl.increments()
+    tbl.increments().unique();
     tbl.integer('class_average')
 
     tbl

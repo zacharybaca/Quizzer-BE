@@ -1,6 +1,6 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('student_teacher', tbl => {
-    tbl.increments()
+    tbl.increments().unique();
 
     tbl
       .integer('teacher_id')
