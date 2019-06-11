@@ -15,7 +15,7 @@ exports.up = function(knex, Promise) {
       .integer('quiz_id').unique()
       .unsigned()
       .notNullable()
-      .references('id')
+      .references('id').unique()
       .inTable('quizzes')
       .onDelete('RESTRICT')
       .onUpdate('CASCADE')
