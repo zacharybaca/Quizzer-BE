@@ -31,7 +31,7 @@ exports.up = function(knex, Promise) {
       .onUpdate('CASCADE')
 
     tbl
-      .integer('correct_answer')
+      .integer('correct_answer').unique()
       .unsigned()
       .notNullable()
       .references('correct_answer')
