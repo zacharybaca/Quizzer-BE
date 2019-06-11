@@ -10,7 +10,7 @@ exports.up = function(knex, Promise) {
       .integer('user_id').unique()
       .unsigned()
       .notNullable()
-      .references('id').unique()
+      .references('id')
       .inTable('users')
       .onDelete("RESTRICT")
       .onUpdate("CASCADE");
