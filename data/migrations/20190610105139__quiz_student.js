@@ -3,7 +3,7 @@ exports.up = function(knex, Promise) {
   return knex.schema.createTable('quiz_student', tbl => {
     tbl.increments().unique();
     
-    tbl
+    tbl.unique()
       .integer('student_id')
       .unsigned()
       .notNullable()
@@ -12,7 +12,7 @@ exports.up = function(knex, Promise) {
       .onDelete('RESTRICT')
       .onUpdate('CASCADE') 
     
-    tbl
+    tbl.unique()
       .integer('quiz_id')
       .unsigned()
       .notNullable()

@@ -3,7 +3,7 @@ exports.up = function(knex, Promise) {
     tbl.increments().unique();
     tbl.integer('class_average')
 
-    tbl
+    tbl.unique()
       .integer('teacher_id')
       .unsigned()
       .notNullable()
