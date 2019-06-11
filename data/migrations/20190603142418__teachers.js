@@ -7,7 +7,7 @@ exports.up = function(knex, Promise) {
     tbl.string("role");
 
     tbl
-      .integer('user_id').unique()
+      .integer('user_id')
       .unsigned()
       .notNullable()
       .references('id')

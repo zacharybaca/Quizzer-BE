@@ -12,7 +12,7 @@ exports.up = function(knex, Promise) {
     tbl.integer('points');
 
     tbl
-      .integer('quiz_id').unique()
+      .integer('quiz_id')
       .unsigned()
       .notNullable()
       .references('id')

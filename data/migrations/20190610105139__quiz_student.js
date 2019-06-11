@@ -4,7 +4,7 @@ exports.up = function(knex, Promise) {
     tbl.increments().unique();
     
     tbl
-      .integer('student_id').unique()
+      .integer('student_id')
       .unsigned()
       .notNullable()
       .references('id')
@@ -13,7 +13,7 @@ exports.up = function(knex, Promise) {
       .onUpdate('CASCADE') 
     
     tbl
-      .integer('quiz_id').unique()
+      .integer('quiz_id')
       .unsigned()
       .notNullable()
       .references('id')
