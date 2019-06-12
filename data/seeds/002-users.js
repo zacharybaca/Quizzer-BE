@@ -4,32 +4,27 @@ exports.seed = function(knex, Promise) {
     {
       name: "Michael",
       username: "Michael_Lewis",
-      email: "MLewis@gmail.com",
-      role: "Teacher"
+      email: "MLewis@gmail.com"
     },
     {
       name: "Agnes",
       username: "Agnes_Thomas",
-      email: "AThomas@gmail.com",
-      role: "Student"
+      email: "AThomas@gmail.com"
     },
     {
       name: "Ruth",
       username: "Ruth_Richards",
-      email: "RRichards@gmail.com",
-      role: "Teacher"
+      email: "RRichards@gmail.com"
     },
     {
       name: "Bennie",
       username: "Bennie_Hearse",
-      email: "BHearse@gmail.com",
-      role: "Student"
+      email: "BHearse@gmail.com"
     },
     {
       name: "Louisa",
       username: "Louisa_Kenny",
-      email: "LKenny@gmail.com",
-      role: "Teacher"
+      email: "LKenny@gmail.com"
     }
   ]);
 };

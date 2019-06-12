@@ -4,7 +4,6 @@ exports.up = function(knex, Promise) {
     tbl.string("name");
     tbl.string("username");
     tbl.string("email");
-    tbl.string("role");
   });
 };
 
