@@ -27,13 +27,14 @@ exports.up = function(knex, Promise) {
       .onDelete('RESTRICT')
       .onUpdate('CASCADE')
 
-    tbl
-      .binary('correct_answer')
-      .unsigned()
-      .references('correct_answer')
-      .inTable('questions')
-      .onDelete('RESTRICT')
-      .onUpdate('CASCADE') 
+    // tbl
+    //   .binary('correct_answer')
+    //   .unsigned()
+    //   .notNullable()
+    //   .references('correct_answer')
+    //   .inTable('questions')
+    //   .onDelete('RESTRICT')
+    //   .onUpdate('CASCADE') 
   });
 };
 
