@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const passport = require("passport");
-const db = require("../model/TeacherModel");
+const db = require("../model/UserModel");
 const { authenticate } = require("../auth/authenticate");
 
 router.post("/login", authenticate, async (req, res) => {
@@ -24,7 +24,7 @@ router.post("/login", authenticate, async (req, res) => {
 
     const addUser = await db.add(user);
 
-    res.status(201).json(addUser);
+    return res.status(201).json(addUser);
   } catch (err) {
     console.log(err.message);
     res.status(500).json({ message: err.message });
