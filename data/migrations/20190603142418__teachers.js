@@ -7,10 +7,10 @@ exports.up = function(knex, Promise) {
     tbl.string("role");
 
     tbl
-      .integer('user_id')
+      .integer("user_id")
       .unsigned()
-      .references('id')
-      .inTable('users')
+      .references("id")
+      .inTable("users")
       .onDelete("RESTRICT")
       .onUpdate("CASCADE");
   });
