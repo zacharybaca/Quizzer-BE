@@ -4,19 +4,14 @@ const db = require("../model/QuizModel");
 
 //Check -> means that the endpoint has been tested and is in working order
 
-// test
-router.get("/", (req, res) => {
-  res.status(200).json("Quizzer: Auth Quiz API is running");
-});
-
-//Check
+//get all quizzes
 router.get("/quizzes", async (req, res) => {
   const rows = await db.find();
 
   res.status(200).json(rows);
 });
 
-//Check
+//get quiz by id
 router.get("/quizzes/:id", (req, res) => {
   try {
     db.getQuizWithQuestions(req.params.id).then(data => {
@@ -30,10 +25,9 @@ router.get("/quizzes/:id", (req, res) => {
 //Check
 router.post("/quizzes", async (req, res) => {
   try {
-    const Data = req.body;
-    //console.log(Data)
-    if ((Data.quiz_name, Data.quiz_description, Data.quiz_question)) {
-      const result = await db.add(Data);
+    const data = req.body;
+    if (data.teacher_id) {
+      const result = await db.add(data);
       //console.log('result:', result)
       res.status(201).json({ message: `Quiz Successfully added ` });
     } else {
@@ -107,6 +101,26 @@ router.delete("/quizzes/:id", async (req, res) => {
 router.get("/teachers/:id/quizzes", async (req, res) => {
   try {
     const quizzes = await db.getQuizByTeacher(req.params.id);
+
+    res.status(200).json(quizzes);
+  } catch (err) {
+    res.status(500).json({ msg: err.message });
+  }
+});
+
+router.get("/student/:id/quizzes", async (req, res) => {
+  try {
+    const quizzes = await db.getQuizByStudent(req.params.id);
+
+    res.status(200).json(quizzes);
+  } catch (err) {
+    res.status(500).json({ msg: err.message });
+  }
+});
+
+router.get("/quizzes/correct_answer/:id", async (req, res) => {
+  try {
+    const quizzes = await db.correctAnswers(req.params.id);
 
     res.status(200).json(quizzes);
   } catch (err) {
