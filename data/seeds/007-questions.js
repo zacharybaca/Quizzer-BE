@@ -12,7 +12,6 @@ exports.seed = function(knex, Promise) {
       D: '15',
       correct_answer: "B",
       points: "2",
-      quiz_id: '',
     },
     {
       category: "Science",
@@ -24,7 +23,6 @@ exports.seed = function(knex, Promise) {
       D: 'H2O',
       correct_answer: "D",
       points: "2",
-      quiz_id: '',
     },
     {
       category: "English",
@@ -36,7 +34,6 @@ exports.seed = function(knex, Promise) {
       D: 'After',
       correct_answer: "C",
       points: "2",
-      quiz_id: '',
     },
     {
       category: "History",
@@ -48,7 +45,6 @@ exports.seed = function(knex, Promise) {
       D: 'Assassination of Joseph Stalin',
       correct_answer: "A",
       points: "2",
-      quiz_id: '',
     },
     {
       category: "Math",
@@ -60,7 +56,6 @@ exports.seed = function(knex, Promise) {
       D: '1',
       correct_answer: "C",
       points: "2",
-      quiz_id: '',
     },
     {
       category: "Science",
@@ -68,11 +63,10 @@ exports.seed = function(knex, Promise) {
       Q_content: "Brass gets discolored in air because of the presence of which of the following gases in air?",
       A: 'Hydrogen Sulphide',
       B: 'Oxygen',
-      C: 'Carbon Dioxide',
       D: 'Nitrogen',
+      C: 'Carbon Dioxide',
       correct_answer: "A",
       points: "2",
-      quiz_id: '',
     },
     {
       category: "English",
@@ -84,7 +78,6 @@ exports.seed = function(knex, Promise) {
       D: 'Was looked upon',
       correct_answer: "C",
       points: "2",
-      quiz_id: '',
     },
     {
       category: "History",
@@ -96,7 +89,6 @@ exports.seed = function(knex, Promise) {
       D: 'Philippines',
       correct_answer: "D",
       points: "2",
-      quiz_id: '',
     },
     {
       category: "Math",
@@ -108,7 +100,6 @@ exports.seed = function(knex, Promise) {
       D: '36',
       correct_answer: "B",
       points: "2",
-      quiz_id: '',
     },
     {
       category: "Science",
@@ -120,7 +111,6 @@ exports.seed = function(knex, Promise) {
       D: 'Phosphorous',
       correct_answer: "A",
       points: "2",
-      quiz_id: '',
     },
     {
       category: "English",
@@ -132,7 +122,6 @@ exports.seed = function(knex, Promise) {
       D: 'Easier',
       correct_answer: "C",
       points: "2",
-      quiz_id: '',
     },
     {
       category: "History",
@@ -144,7 +133,6 @@ exports.seed = function(knex, Promise) {
       D: 'January 1, 1942',
       correct_answer: "C",
       points: "2",
-      quiz_id: '',
     },
     //Remediation Q's
     {
@@ -156,7 +144,6 @@ exports.seed = function(knex, Promise) {
       C: '∠Z = 25°',
       D: '∠Z = 75°',
       correct_answer: "A",
-      quiz_id: '',
     },
     {
       category: "Science",
@@ -167,7 +154,6 @@ exports.seed = function(knex, Promise) {
       C: 'Phosphorous',
       D: 'Lead',
       correct_answer: "B",
-      quiz_id: '',
     },
     {
       category: "English",
@@ -178,7 +164,6 @@ exports.seed = function(knex, Promise) {
       C: 'Direction',
       D: 'Hiking',
       correct_answer: "C",
-      quiz_id: '',
     },
     {
       category: "History",
@@ -189,7 +174,6 @@ exports.seed = function(knex, Promise) {
       C: 'Yuri Gagarin',
       D: 'Neil Armstrong',
       correct_answer: "A",
-      quiz_id: '',
     },
     {
       category: "Math",
@@ -200,7 +184,6 @@ exports.seed = function(knex, Promise) {
       C: '1/5',
       D: '-1/5',
       correct_answer: "C",
-      quiz_id: '',
     },
     {
       category: "Science",
@@ -211,7 +194,6 @@ exports.seed = function(knex, Promise) {
       C: 'Lead',
       D: 'Tin',
       correct_answer: "A",
-      quiz_id: '',
     },
     {
       category: "English",
@@ -222,7 +204,6 @@ exports.seed = function(knex, Promise) {
       C: 'Nail : hammer',
       D: 'Frame : picture',
       correct_answer: "D",
-      quiz_id: '',
     },
     {
       category: "History",
@@ -233,7 +214,6 @@ exports.seed = function(knex, Promise) {
       C: 'Vasa',
       D: 'Rurikids',
       correct_answer: "B",
-      quiz_id: '',
     },
     {
       category: "Math",
@@ -244,7 +224,6 @@ exports.seed = function(knex, Promise) {
       C: 'x = 1/2, 3',
       D: 'x = 1, 3/2',
       correct_answer: "D",
-      quiz_id: '',
     },
     {
       category: "Science",
@@ -255,7 +234,6 @@ exports.seed = function(knex, Promise) {
       C: 'Oxygen',
       D: 'Nitrogen',
       correct_answer: "D",
-      quiz_id: '',
     },
     {
       category: "English",
@@ -266,7 +244,6 @@ exports.seed = function(knex, Promise) {
       C: 'At',
       D: 'Beside',
       correct_answer: "C",
-      quiz_id: '',
     },
     {
       category: "History",
@@ -277,7 +254,6 @@ exports.seed = function(knex, Promise) {
       C: 'James Callender',
       D: 'John Adams',
       correct_answer: "B",
-      quiz_id: '',
     }
   ]);
 };
