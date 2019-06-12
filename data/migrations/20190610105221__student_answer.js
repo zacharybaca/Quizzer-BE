@@ -28,7 +28,7 @@ exports.up = function(knex, Promise) {
       .onUpdate('CASCADE')
 
     // tbl
-    //   .binary('correct_answer')
+    //   .string('correct_answer')
     //   .unsigned()
     //   .notNullable()
     //   .references('correct_answer')

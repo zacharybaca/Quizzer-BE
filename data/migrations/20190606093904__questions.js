@@ -8,7 +8,7 @@ exports.up = function(knex, Promise) {
     tbl.string('B').notNullable();
     tbl.string('C');
     tbl.string('D');
-    tbl.binary('correct_answer').notNullable();
+    tbl.string('correct_answer').notNullable();
     tbl.integer('points');
 
     tbl
