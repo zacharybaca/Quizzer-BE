@@ -26,15 +26,6 @@ exports.up = function(knex, Promise) {
       .inTable('quizzes')
       .onDelete('RESTRICT')
       .onUpdate('CASCADE')
-
-    // tbl
-    //   .string('correct_answer')
-    //   .unsigned()
-    //   .notNullable()
-    //   .references('correct_answer')
-    //   .inTable('questions')
-    //   .onDelete('RESTRICT')
-    //   .onUpdate('CASCADE') 
   });
 };
 
