@@ -1,10 +1,10 @@
- The numbers 1️⃣ through 3️⃣ next to each item represent the week that part of the docs needs to be comepleted by.  Make sure to delete the numbers by the end of Labs.
+ The numbers 1️⃣ through 3️⃣ next to each item represent the week that part of the docs needs to be completed by.  Make sure to delete the numbers by the end of Labs.
 
  Each student has a required minimum number of meaningful PRs each week per the rubric.  Contributing to docs does NOT count as a PR to meet your weekly requirements.
 
 # API Documentation
 
-#### 1️⃣ Backend delpoyed at Heroku: https://labs13-quizzer.herokuapp.com/ <br>
+#### 1️⃣ Backend deployed at Heroku: https://labs13-quizzer.herokuapp.com/ <br>
 
 ## 1️⃣ Getting started 
 
@@ -32,36 +32,41 @@ To get the server running locally:
 
 #### AuthRoute Routes
 
-| Method | Endpoint                    | Access Control     | Description                                        |
-| ------ | --------------------------- | -------------- | ------------------------------------------------------ |
-| POST    | `/routes/AuthRoute/google` | all users      | Should Authenticate a user using their Google account. |
+| Method  | Endpoint                  | Access Control  | Description                                                    |
+| ------- | --------------------------| --------------- | -------------------------------------------------------------- |
+| POST    | `/api/auth/teacher/login` | teachers        | Should Authenticate a teacher user using their Google account. |
+| POST    | `/api/auth/student/login` | students        | Should Authenticate a student user using their Google account. |
 
 #### ProfileRoute Routes
 
-| Method | Endpoint                  | Access Control      | Description                                                        |
-| ------ | --------------------------| ------------------- | ------------------------------------------------------------------ |
-| GET    | `/api/profile/`           | supervisors         | Should return the default route indicating Endpoint is working.    |
-| GET    | `/api/profile/teacher`    | owners, supervisors | Should return all available registered Teachers from the database. |
-| GET    | `/api/profile/teacher/:id`| supervisors         | Should return available Teacher by its id from the database.       |
-| POST   | `/api/profile/teacher`    | supervisors         | Should Create a new Teacher which will be stored in the database.  |
-| PUT    | `/api/profile/teacher/:id`| supervisors         | Should Update available Teacher by its id taken from the database. |
-| DELETE | `/api/profile/teacher/:id`| supervisors         | Should Delete available Teacher by its id taken from the database. |
-| GET    | `/api/profile/student`    | owners, supervisors | Should return all available registered Students from the database. |
-| GET    | `/api/profile/student/:id`| owners, supervisors | Should return available Student by its id from the database.       |
-| POST   | `/api/profile/student`    | owners, supervisors | Should Create a new Student which will be stored in the database.  |
-| PUT    | `/api/profile/student/:id`| owners, supervisors | Should Update available Student by its id taken from the database. |
-| DELETE | `/api/profile/student/:id`| owners, supervisors | Should Delete available Student by its id taken from the database. |
+| Method | Endpoint                            | Access Control      | Description                                                        |
+| ------ | ------------------------------------| ------------------- | ------------------------------------------------------------------ |
+| GET    | `/api/profile/`                     | supervisors         | Should return the default route indicating Endpoint is working.    |
+| GET    | `/api/profile/teacher`              | owners, supervisors | Should return all available registered Teachers from the database. |
+| GET    | `/api/profile/teacher/:id`          | supervisors         | Should return available Teacher by its id from the database.       |
+| POST   | `/api/profile/teacher`              | supervisors         | Should Create a new Teacher which will be stored in the database.  |
+| PUT    | `/api/profile/teacher/:id`          | supervisors         | Should Update available Teacher by its id taken from the database. |
+| DELETE | `/api/profile/teacher/:id`          | supervisors         | Should Delete available Teacher by its id taken from the database. |
+| GET    | `/api/profile/student`              | owners, supervisors | Should return all available registered Students from the database. |
+| GET    | `/api/profile/student/:id`          | owners, supervisors | Should return available Student by its id from the database.       |
+| POST   | `/api/profile/student`              | owners, supervisors | Should Create a new Student which will be stored in the database.  |
+| PUT    | `/api/profile/student/:id`          | owners, supervisors | Should Update available Student by its id taken from the database. |
+| DELETE | `/api/profile/student/:id`          | owners, supervisors | Should Delete available Student by its id taken from the database. |
+| GET    | `/api/profile/teachers/:id/students`| owners, supervisors | Should return available teachers for each student.                 |
+| GET    | `/api/profile/students/:id/teachers`| owners, supervisors | Should return available students for each teacher.                 | 
 
 #### QuizRoute Routes
 
-| Method | Endpoint                  | Access Control      | Description                                                       |
-| ------ | --------------------------| ------------------- | ------------------------------------------------------------------|
-| GET    | `/api/quiz/`              | supervisors         | Should return the default route indicating Endpoint is working.   |
-| GET    | `/api/quiz/quizzes`       | owners, supervisors | Should return all available Quizzes from the database.            |
-| GET    | `/api/quiz/quizzes/:id`   | owners, supervisors | Should return available Quiz by its id from the database.         |
-| POST   | `/api/quiz/quizzes`       | owners, supervisors | Should Create a new Quiz which will be stored in the database.    |
-| PUT    | `/api/quiz/quizzes/:id`   | supervisors         | Should Update available Quiz by its id taken from the database.   |
-| DELETE | `/api/quiz/quizzes/:id`   | owners, supervisors | Should Delete available Quiz by its id taken from the database.   |
+| Method | Endpoint                              | Access Control      | Description                                                     |
+| ------ | --------------------------------------| ------------------- | ----------------------------------------------------------------|
+| GET    | `/api/quiz/quizzes`                   | owners, supervisors | Should return all available Quizzes from the database.          |
+| GET    | `/api/quiz/quizzes/:id`               | owners, supervisors | Should return available Quiz by its id from the database.       |
+| POST   | `/api/quiz/quizzes`                   | owners, supervisors | Should Create a new Quiz which will be stored in the database.  |
+| PUT    | `/api/quiz/quizzes/:id`               | supervisors         | Should Update available Quiz by its id taken from the database. |
+| DELETE | `/api/quiz/quizzes/:id`               | owners, supervisors | Should Delete available Quiz by its id taken from the database. |
+| GET    | `/api/quiz/teachers/:id/quizzes`      | owners, supervisors | Should return all available Quizzes pertaining to a teacher.    |
+| GET    | `/api/quiz/student/:id/quizzes`       | owners, supervisors | Should return all available Quizzes pertaining to a student.    | 
+| GET    | `/api/quiz/quizzes/correct_answer/:id`| owners, supervisors | Should return all correct answers for a given quiz.             |
 
 #### UserRoute Routes
 
@@ -83,6 +88,13 @@ To get the server running locally:
 | POST   | `/api/quest/question`       | owners, supervisors | Should Create a new question and store it in the database.      |
 | PUT    | `/api/quest/question/:id`   | supervisors         | Should Update available question by its id from the database.   |
 | DELETE | `/api/quest/question/:id`   | owners, supervisors | Should Delete available question by its id from the database.   |
+
+#### Stripe Routes
+
+| Method | Endpoint                         | Access Control      | Description                                                               |
+| ------ | ---------------------------------| ------------------- | --------------------------------------------------------------------------|
+| POST   | `/api/stripe/customer/create`    | supervisors         | Should add customer details for the slated payment transaction.           |
+| POST   | `/api/stripe/customer/subscribe` | owners, supervisors | Should access the customers payment plan of choice and charge accordingly.|
 
 # Data Model
 
@@ -208,5 +220,5 @@ These contribution guidelines have been adapted from [this good-Contributing.md-
 
 ## Documentation
 
-See [Frontend Documentation](🚫link to your frontend readme here) for details on the fronend of our project.
-🚫 Add DS iOS and/or Andriod links here if applicable.
+See [Frontend Documentation](🚫link to your frontend readme here) for details on the frontend of our project.
+🚫 Add DS iOS and/or Android links here if applicable.
