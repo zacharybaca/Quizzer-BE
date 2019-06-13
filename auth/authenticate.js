@@ -11,7 +11,7 @@ module.exports = {
 };
 
 async function authenticate(req, res, next) {
-  // verfiy token
+  // verify token
   try {
     const token = req.get("Authorization");
     const auth = await axios(
