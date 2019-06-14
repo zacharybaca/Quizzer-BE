@@ -12,16 +12,16 @@ const knexConfig = {
     filename: "./data/quizzer.db3"
   }
 };
-
+ 
 const db = knex(knexConfig);
 
 //Check -> means that the endpoint has been tested and is in working order
 
 // test
 router.get("/", (req, res) => {
-  res.status(200).json("Quizzer: Profile Route API is running");
+  res.status(200).json("Profile Route API is running");
 });
-
+ 
 // Teacher routes
 
 //Check
