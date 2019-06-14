@@ -26,15 +26,16 @@ router.get("/quizzes/:id", (req, res) => {
 router.post("/quizzes", async (req, res) => {
   try {
     const data = req.body;
+    console.log(data);
     if (data.teacher_id) {
       const result = await db.add(data);
       //console.log('result:', result)
-      res.status(201).json({ message: `Quiz Successfully added ` });
+      res.status(201).json(result);
     } else {
       res.status(422).json({ error: "Missing data" });
     }
   } catch (err) {
-    res.status(500).json({ error: "Database error" });
+    res.status(500).json({ error: err.message });
   }
 });
 
