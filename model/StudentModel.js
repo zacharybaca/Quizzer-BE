@@ -1,42 +1,96 @@
-const db = require('../data/dbConfig.js');
+const db = require("../data/dbConfig.js");
 
 module.exports = {
-    find,
-    findBy,
-    add,
-    findById,
-    remove,
-    update,
+  find,
+  findBy,
+  add,
+  findById,
+  remove,
+  update,
+  showStudents,
+  showTeachers
 };
 
 function find() {
-    return db('student');
+  return db("students");
 }
 
 function findBy(filter) {
-    return db('student').where(filter);
+  return db("students").where(filter);
 }
 
 async function add(user) {
-    const [id] = await db('student').insert(user);
+  const [id] = await db("students").insert(user);
 
-    return findById(id);
+  return findById(id);
 }
 
 function findById(id) {
-    return db('student')
-    .where({id})
+  return db("students")
+    .where({ id })
     .first();
 }
 
 function update(id, changes) {
-    return db('student')
+  return db("students")
     .where({ id })
     .update(changes);
 }
 
 function remove(id) {
-    return db('student')
-    .where('id', id)
+  return db("students")
+    .where("id", id)
     .del();
+}
+
+async function showTeachers(id) {
+  const teachers = await db("student_teacher")
+    .join("students", "students.id", "student_teacher.student_id")
+    .join("teachers", "teachers.id", "student_teacher.teacher_id")
+    .select(
+      "teachers.id",
+      "teachers.name",
+      "teachers.username",
+      "teachers.email"
+    )
+    .where("students.id", id);
+
+  const student = await db("students")
+    .select("name")
+    .where("id", id)
+    .first();
+
+  const res = {
+    [student.name]: { teachers }
+  };
+
+  return {
+    ...res
+  };
+}
+
+async function showStudents(id) {
+  const students = await db("student_teacher")
+    .join("teachers", "teachers.id", "student_teacher.teacher_id")
+    .join("students", "students.id", "student_teacher.student_id")
+    .select(
+      "students.id",
+      "students.name",
+      "students.username",
+      "students.email"
+    )
+    .where("teachers.id", id);
+
+  const teacher = await db("teachers")
+    .select("name")
+    .where("id", id)
+    .first();
+
+  const res = {
+    [teacher.name]: { students }
+  };
+
+  return {
+    ...res
+  };
 }
