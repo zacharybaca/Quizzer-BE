@@ -8,7 +8,8 @@ module.exports = {
   remove,
   update,
   showStudents,
-  showTeachers
+  showTeachers,
+  addStudentToClass
 };
 
 function find() {
@@ -35,6 +36,12 @@ function update(id, changes) {
   return db("students")
     .where({ id })
     .update(changes);
+}
+
+async function addStudentToClass(access) {
+  const [id] = await db("student_teacher").insert(access);
+
+  return findById(id);
 }
 
 function remove(id) {
