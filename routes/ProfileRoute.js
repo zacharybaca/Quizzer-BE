@@ -12,7 +12,7 @@ const knexConfig = {
     filename: "./data/quizzer.db3"
   }
 };
-
+ 
 const db = knex(knexConfig);
 
 //Check -> means that the endpoint has been tested and is in working order
