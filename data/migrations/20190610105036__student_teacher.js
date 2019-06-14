@@ -18,6 +18,8 @@ exports.up = function(knex, Promise) {
       .onDelete("RESTRICT")
       .onUpdate("CASCADE");
 
+    tbl.integer("access_code");
+
     tbl.string("relationship");
   });
 };
