@@ -11,11 +11,14 @@ router.post("/teacher/login", authenticate, async (req, res) => {
   try {
     const { email, name } = req.body.profileObj;
     const role = "Teacher";
+    const maxNumber = 100000;
+    let access_code = Math.floor(Math.random() * maxNumber + 1);
 
     const user = {
       email,
       name,
-      role
+      role,
+      access_code
     };
 
     console.log(user);
