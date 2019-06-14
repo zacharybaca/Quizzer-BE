@@ -7,9 +7,9 @@ describe('ProfileRoute.js', () => {
         return request(server)
           .get('/api/profile')
           .then(res => {
-            expect(res.body).toEqual({ message: 'Quizzer: Profile Route API is running' });
+            expect(res.body).toEqual('Profile Route API is running');
           }); 
-      });
+      }); 
     });
     describe('GET /teacher', () => {
         it('{ -- GET /api/profile/teacher; Expectation: "List of teachers" }', async () => {
@@ -26,11 +26,11 @@ describe('ProfileRoute.js', () => {
     describe('POST /teacher', () => {
         it('{ -- POST api/profile/teacher; Expectation: "Should POST a new teacher}', async () => {
             const entry = {
-                 name: "Test2",
-                 username: "Test2",
-                 email: "Test2@gmail.com",
-                 role: "Teacher2",
-                 student_id: 7 
+                name: "test2",
+                username: "testuser2",
+                email: "test2@mail.com",
+                role: "testrole2",
+                user_id: 6
             }
             const response = await request(server).post('/api/profile/teacher').send(entry)
     
@@ -40,11 +40,11 @@ describe('ProfileRoute.js', () => {
     describe('PUT /teacher', () => {
         it('{ -- PUT api/profile/teacher/:id; Expectation: "Should UPDATE a teacher by ID}', async () => {
             const entry = {
-                 name: "Test7",
-                 username: "Test2",
-                 email: "Test2@gmail.com",
-                 role: "Teacher2",
-                 student_id: 7
+                name: "test222",
+                username: "testuser222",
+                email: "tes111t@mail.com",
+                role: "testrole111",
+                user_id: 6 
             }
             const response = await request(server).put('/api/profile/teacher/7').send(entry)
     
@@ -53,7 +53,7 @@ describe('ProfileRoute.js', () => {
     })
     describe('DELETE /teacher', () => {
         it('{ -- PUT api/profile/teacher/:id; Expectation: "Should DELETE a teacher by ID}', async () => {
-            const response = await request(server).delete('/api/profile/teacher/:8')
+            const response = await request(server).delete('/api/profile/teacher/8')
     
             expect(response.status).toBe(200)
         })
