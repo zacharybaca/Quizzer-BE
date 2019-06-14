@@ -7,6 +7,15 @@ exports.up = function(knex, Promise) {
     tbl.string("role");
 
     tbl
+      .integer("access_code")
+      .unique()
+      .unsigned()
+      .references("access_code")
+      .inTable("student_teacher")
+      .onDelete("RESTRICT")
+      .onUpdate("CASCADE");
+
+    tbl
       .integer("user_id")
       .unsigned()
       .references("id")

@@ -6,35 +6,40 @@ exports.seed = function(knex, Promise) {
       username: "Lucy2",
       email: "Lucy@gmail.com",
       role: "Teacher",
-      user_id: 1
+      user_id: 1,
+      access_code: 5396
     },
     {
       name: "Johnny",
       username: "Johnny2",
       email: "Johnny@gmail.com",
       role: "Teacher",
-      user_id: 2
+      user_id: 2,
+      access_code: 1234
     },
     {
       name: "Phillip",
       username: "Phillip2",
       email: "Phillip@gmail.com",
       role: "Teacher",
-      user_id: 3
+      user_id: 3,
+      access_code: 5235
     },
     {
       name: "Agnes",
       username: "Agnes2",
       email: "Agnes@gmail.com",
       role: "Teacher",
-      user_id: 4
+      user_id: 4,
+      access_code: 4321
     },
     {
       name: "Samuel",
       username: "Samuel2",
       email: "Samuel@gmail.com",
       role: "Teacher",
-      user_id: 5
+      user_id: 5,
+      access_code: 9999
     }
   ]);
 };

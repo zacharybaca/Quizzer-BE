@@ -4,21 +4,25 @@ exports.seed = function(knex, Promise) {
     {
       teacher_id: 1,
       student_id: 1,
+      access_code: 5396,
       relationship: "Authorized"
     },
     {
       teacher_id: 1,
       student_id: 2,
+      access_code: 5396,
       relationship: "Authorized"
     },
     {
       teacher_id: 1,
       student_id: 3,
+      access_code: 5396,
       relationship: "Authorized"
     },
     {
       teacher_id: 2,
       student_id: 1,
+      access_code: 1234,
       relationship: "Authorized"
     }
   ]);
