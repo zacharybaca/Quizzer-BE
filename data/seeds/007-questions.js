@@ -11,7 +11,7 @@ exports.seed = function(knex, Promise) {
       B: "16",
       C: "14",
       D: "15",
-      correct_answer: "B",
+      correct_answer: "16",
       points: "2"
     },
     {
@@ -23,7 +23,7 @@ exports.seed = function(knex, Promise) {
       B: "HO2",
       C: "H2O2",
       D: "H2O",
-      correct_answer: "D",
+      correct_answer: "H2O",
       points: "2"
     },
     {
@@ -35,7 +35,7 @@ exports.seed = function(knex, Promise) {
       B: "Since",
       C: "Neither/nor",
       D: "After",
-      correct_answer: "C",
+      correct_answer: "Neither/nor",
       points: "2"
     },
     {
@@ -47,7 +47,7 @@ exports.seed = function(knex, Promise) {
       B: "Assassination of Adolf Hitler",
       C: "Assassination of Benito Mussolini",
       D: "Assassination of Joseph Stalin",
-      correct_answer: "A",
+      correct_answer: "Assassination of Archduke Franz Ferdinand",
       points: "2"
     },
     {
@@ -59,7 +59,7 @@ exports.seed = function(knex, Promise) {
       B: "2990",
       C: "2i",
       D: "1",
-      correct_answer: "C",
+      correct_answer: "2i",
       points: "2"
     },
     {
@@ -72,7 +72,7 @@ exports.seed = function(knex, Promise) {
       B: "Oxygen",
       D: "Nitrogen",
       C: "Carbon Dioxide",
-      correct_answer: "A",
+      correct_answer: "Hydrogen Sulphide",
       points: "2"
     },
     {
@@ -85,7 +85,7 @@ exports.seed = function(knex, Promise) {
       B: "Was thought to be",
       C: "Pretending to be",
       D: "Was looked upon",
-      correct_answer: "C",
+      correct_answer: "Pretending to be",
       points: "2"
     },
     {
@@ -98,7 +98,7 @@ exports.seed = function(knex, Promise) {
       B: "Cuba",
       C: "Estonia",
       D: "Philippines",
-      correct_answer: "D",
+      correct_answer: "Philippines",
       points: "2"
     },
     {
@@ -110,7 +110,7 @@ exports.seed = function(knex, Promise) {
       B: "10",
       C: "16",
       D: "36",
-      correct_answer: "B",
+      correct_answer: "10",
       points: "2"
     },
     {
@@ -123,7 +123,7 @@ exports.seed = function(knex, Promise) {
       B: "Chlorine",
       C: "Helium",
       D: "Phosphorous",
-      correct_answer: "A",
+      correct_answer: "Bromine",
       points: "2"
     },
     {
@@ -135,7 +135,7 @@ exports.seed = function(knex, Promise) {
       B: "Very Easy",
       C: "Easily",
       D: "Easier",
-      correct_answer: "C",
+      correct_answer: "Easily",
       points: "2"
     },
     {
@@ -147,7 +147,7 @@ exports.seed = function(knex, Promise) {
       B: "December 8, 1941",
       C: "June 22, 1941",
       D: "January 1, 1942",
-      correct_answer: "C",
+      correct_answer: "June 22, 1941",
       points: "2"
     },
     //Remediation Q's
@@ -160,7 +160,7 @@ exports.seed = function(knex, Promise) {
       B: "∠Z = 150°",
       C: "∠Z = 25°",
       D: "∠Z = 75°",
-      correct_answer: "A"
+      correct_answer: "∠Z = 50°"
     },
     {
       quiz_id: 1,
@@ -171,7 +171,7 @@ exports.seed = function(knex, Promise) {
       B: "Graphite",
       C: "Phosphorous",
       D: "Lead",
-      correct_answer: "B"
+      correct_answer: "Graphite"
     },
     {
       quiz_id: 1,
@@ -182,7 +182,7 @@ exports.seed = function(knex, Promise) {
       B: "Speed",
       C: "Direction",
       D: "Hiking",
-      correct_answer: "C"
+      correct_answer: "Direction"
     },
     {
       quiz_id: 1,
@@ -194,7 +194,7 @@ exports.seed = function(knex, Promise) {
       B: "Chuck Yeager",
       C: "Yuri Gagarin",
       D: "Neil Armstrong",
-      correct_answer: "A"
+      correct_answer: "Charles Lindbergh"
     },
     {
       quiz_id: 1,
@@ -205,7 +205,7 @@ exports.seed = function(knex, Promise) {
       B: "1/25",
       C: "1/5",
       D: "-1/5",
-      correct_answer: "C"
+      correct_answer: "1/5"
     },
     {
       quiz_id: 1,
@@ -217,7 +217,7 @@ exports.seed = function(knex, Promise) {
       B: "Zinc",
       C: "Lead",
       D: "Tin",
-      correct_answer: "A"
+      correct_answer: "Mercury"
     },
     {
       quiz_id: 1,
@@ -228,7 +228,7 @@ exports.seed = function(knex, Promise) {
       B: "Artist : carpenter",
       C: "Nail : hammer",
       D: "Frame : picture",
-      correct_answer: "D"
+      correct_answer: "Frame : picture"
     },
     {
       quiz_id: 1,
@@ -240,7 +240,7 @@ exports.seed = function(knex, Promise) {
       B: "Romanov",
       C: "Vasa",
       D: "Rurikids",
-      correct_answer: "B"
+      correct_answer: "Romanov"
     },
     {
       quiz_id: 1,
@@ -251,7 +251,7 @@ exports.seed = function(knex, Promise) {
       B: "x = 3/2, 1/3",
       C: "x = 1/2, 3",
       D: "x = 1, 3/2",
-      correct_answer: "D"
+      correct_answer: "x = 1, 3/2"
     },
     {
       quiz_id: 1,
@@ -262,7 +262,7 @@ exports.seed = function(knex, Promise) {
       B: "Hydrogen",
       C: "Oxygen",
       D: "Nitrogen",
-      correct_answer: "D"
+      correct_answer: "Nitrogen"
     },
     {
       quiz_id: 1,
@@ -273,7 +273,7 @@ exports.seed = function(knex, Promise) {
       B: "By",
       C: "At",
       D: "Beside",
-      correct_answer: "C"
+      correct_answer: "At"
     },
     {
       quiz_id: 1,
@@ -284,7 +284,7 @@ exports.seed = function(knex, Promise) {
       B: "Aaron Burr",
       C: "James Callender",
       D: "John Adams",
-      correct_answer: "B"
+      correct_answer: "Aaron Burr"
     }
   ]);
 };
