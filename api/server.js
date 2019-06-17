@@ -4,7 +4,6 @@ const cors = require("cors");
 const db = require("./queries");
 const passport = require("passport");
 const passportStrats = require("../passport");
-
 const stripe = require('../routes/stripe')
 
 const knex = require("knex");
