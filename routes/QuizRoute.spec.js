@@ -34,7 +34,7 @@ describe('QuizRoute.js', () => {
             const response = await request(server).put('/api/quiz/quizzes/2').send(entry)
     
             expect(response.status).toBe(200)
-        })
+        }) 
     })
     describe('DELETE /api/quiz', () => {
         it('{ -- PUT api/quiz/quizzes/:id; Expectation: "Should DELETE a quiz by ID}', async () => {
