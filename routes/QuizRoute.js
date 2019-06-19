@@ -30,6 +30,7 @@ router.post("/quizzes", async (req, res) => {
     if (data.teacher_id) {
       const result = await db.add(data);
       //console.log('result:', result)
+      console.log(result);
       res.status(201).json(result);
     } else {
       res.status(422).json({ error: "Missing data" });
@@ -112,6 +113,7 @@ router.get("/teachers/:id/quizzes", async (req, res) => {
 router.get("/student/:id/quizzes", async (req, res) => {
   try {
     const quizzes = await db.getQuizByStudent(req.params.id);
+    console.log("getting quizzes by id", quizzes);
 
     res.status(200).json(quizzes);
   } catch (err) {
