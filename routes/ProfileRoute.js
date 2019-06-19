@@ -114,6 +114,7 @@ router.post("/addstudent", async (req, res) => {
   try {
     const info = req.body;
     const { student_id } = req.body;
+    console.log("adding student to class", info);
 
     const add = await dbs.addStudentToClass(info);
 
