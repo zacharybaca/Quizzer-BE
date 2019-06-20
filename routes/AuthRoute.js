@@ -63,9 +63,9 @@ router.post("/student/login", authenticate, async (req, res) => {
     const addUser = await Studentdb.add(user);
 
     return res.status(201).json(addUser);
-  } catch (err) {
-    console.log(err.message);
-    res.status(500).json({ message: err.message });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error });
   }
 });
 
