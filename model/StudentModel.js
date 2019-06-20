@@ -21,7 +21,7 @@ function findBy(filter) {
 }
 
 async function add(user) {
-  const [id] = await db("students").insert(user);
+  const { id } = await db("students").insert(user);
 
   return findById(id);
 }
@@ -39,7 +39,7 @@ function update(id, changes) {
 }
 
 async function addStudentToClass(access) {
-  const [id] = await db("student_teacher").insert(access);
+  const { id } = await db("student_teacher").insert(access);
 
   return findById(id);
 }
