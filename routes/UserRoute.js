@@ -9,7 +9,7 @@ const db = require("../model/UserModel");
 
 //Check -> means that the endpoint has been tested and is in working order
 
-//Check
+//Check 
 router.get("/", (req, res) => {
   db.find()
     .then(user => {
