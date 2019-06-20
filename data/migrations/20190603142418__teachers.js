@@ -7,14 +7,6 @@ exports.up = function(knex, Promise) {
     tbl.string("role");
 
     tbl.integer("access_code");
-
-    tbl
-      .integer("user_id")
-      .unsigned()
-      .references("id")
-      .inTable("users")
-      .onDelete("RESTRICT")
-      .onUpdate("CASCADE");
   });
   console.log("created teachers table");
 };
