@@ -119,8 +119,9 @@ router.post("/addstudent", async (req, res) => {
     const add = await dbs.addStudentToClass(info);
 
     res.status(201).json(add);
-  } catch (err) {
-    res.status(500).json({ msg: err.message });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error });
   }
 });
 //Check
