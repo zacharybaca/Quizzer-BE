@@ -47,7 +47,8 @@ function remove(id) {
 
 async function getQuizByTeacher(id) {
   const quizzes = await db("quizzes")
-    .select("id", "class_average")
+    .join("questions", "questions.quiz_id", "quizzes.id")
+    .select("*")
     .where("quizzes.teacher_id", id);
 
   return {

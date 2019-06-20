@@ -26,9 +26,9 @@ router.get("/quizzes/:id", (req, res) => {
 router.post("/quizzes", async (req, res) => {
   try {
     const data = req.body;
-    console.log(data);
-    if (data.teacher_id) {
-      const result = await db.add(data);
+    console.log(data.quiz);
+    if (data.quiz.teacher_id) {
+      const result = await db.add(data.quiz);
       //console.log('result:', result)
       console.log(result);
       res.status(201).json(result);
@@ -103,7 +103,7 @@ router.delete("/quizzes/:id", async (req, res) => {
 router.get("/teachers/:id/quizzes", async (req, res) => {
   try {
     const quizzes = await db.getQuizByTeacher(req.params.id);
-
+    console.log(quizzes);
     res.status(200).json(quizzes);
   } catch (err) {
     res.status(500).json({ msg: err.message });
