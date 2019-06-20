@@ -42,8 +42,12 @@ function update(id, changes) {
     .update(changes);
 }
 
-function remove(id) {
-  return db("quizzes")
+async function remove(id) {
+  await db("questions")
+    .where("quiz_id", id)
+    .del();
+
+  return await db("quizzes")
     .where("id", id)
     .del();
 }
