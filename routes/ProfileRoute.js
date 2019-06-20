@@ -12,7 +12,7 @@ const knexConfig = {
     filename: "./data/quizzer.db3"
   }
 };
- 
+
 const db = knex(knexConfig);
 
 //Check -> means that the endpoint has been tested and is in working order
@@ -21,7 +21,7 @@ const db = knex(knexConfig);
 router.get("/", (req, res) => {
   res.status(200).json("Profile Route API is running");
 });
- 
+
 // Teacher routes
 
 //Check
@@ -109,6 +109,20 @@ router.delete("/teacher/:id", async (req, res) => {
 
 // Student Routes
 
+//add student to class
+router.post("/addstudent", async (req, res) => {
+  try {
+    const info = req.body;
+    const { student_id } = req.body;
+    console.log("adding student to class", info);
+
+    const add = await dbs.addStudentToClass(info);
+
+    res.status(201).json(add);
+  } catch (err) {
+    res.status(500).json({ msg: err.message });
+  }
+});
 //Check
 router.get("/student", (req, res) => {
   dbs
