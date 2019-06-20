@@ -5,36 +5,31 @@ exports.seed = function(knex, Promise) {
       name: "Casey",
       username: "Casey2",
       email: "Casey@gmail.com",
-      role: "Student",
-      user_id: 1
+      role: "Student"
     },
     {
       name: "Kelly",
       username: "Kelly2",
       email: "Kelly@gmail.com",
-      role: "Student",
-      user_id: 2
+      role: "Student"
     },
     {
       name: "Sammy",
       username: "Sammy2",
       email: "Sammy@gmail.com",
-      role: "Student",
-      user_id: 3
+      role: "Student"
     },
     {
       name: "Frank",
       username: "Frank2",
       email: "Frank@gmail.com",
-      role: "Student",
-      user_id: 4
+      role: "Student"
     },
     {
       name: "Lucas",
       username: "Lucas2",
       email: "Lucas@gmail.com",
-      role: "Student",
-      user_id: 5
+      role: "Student"
     }
   ]);
 };
