@@ -38,11 +38,8 @@ function update(id, changes) {
     .update(changes);
 }
 
-async function addStudentToClass(access) {
-  await db("student_teacher").insert(access);
-  console.log(id);
-
-  return findById(id).first();
+function addStudentToClass(access) {
+  return db("student_teacher").insert(access);
 }
 
 function remove(id) {
