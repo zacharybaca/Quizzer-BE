@@ -22,8 +22,11 @@ function findBy(filter) {
 }
 
 async function add(data) {
-  const [id] = await db("quizzes").insert(data);
+  const [id] = await db("quizzes")
+    .returning("id")
+    .insert(data);
 
+  console.log(id);
   return findById(id);
 }
 
