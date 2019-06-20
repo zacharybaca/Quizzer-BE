@@ -6,14 +6,7 @@ exports.up = function(knex, Promise) {
     tbl.string("email");
     tbl.string("role");
 
-    tbl
-      .integer("access_code")
-      .unique()
-      .unsigned()
-      .references("access_code")
-      .inTable("student_teacher")
-      .onDelete("RESTRICT")
-      .onUpdate("CASCADE");
+    tbl.integer("access_code");
 
     tbl
       .integer("user_id")
@@ -23,6 +16,7 @@ exports.up = function(knex, Promise) {
       .onDelete("RESTRICT")
       .onUpdate("CASCADE");
   });
+  console.log("created teachers table");
 };
 
 exports.down = function(knex, Promise) {
