@@ -19,7 +19,7 @@ function findBy(filter) {
 
 async function add(data) {
   const { id } = await db("questions").insert(data);
-
+  console.log("questions", id);
   return findById(id);
 }
 
