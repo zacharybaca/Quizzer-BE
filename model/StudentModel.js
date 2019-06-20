@@ -39,7 +39,7 @@ function update(id, changes) {
 }
 
 async function addStudentToClass(access) {
-  const { id } = await db("student_teacher").insert(access);
+  const [id] = await db("student_teacher").insert(access);
   console.log(id);
 
   return findById(id);
