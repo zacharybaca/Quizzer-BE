@@ -77,4 +77,9 @@ typings/
 .dynamodb/
 
 # database
+<<<<<<< HEAD
 *.db3
+=======
+# *.db3
+
+>>>>>>> 4574118d81620c25e5e3d854f54270bb5b7da544

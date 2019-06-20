@@ -20,7 +20,7 @@ async function authenticate(req, res, next) {
     );
     next();
   } catch (err) {
-    res.status(401).json({ msg: "token not valid" });
+    res.status(401).json({ err, msg: "token not valid" });
   }
 }
 
