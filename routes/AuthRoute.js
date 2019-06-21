@@ -22,7 +22,7 @@ router.post("/teacher/login", authenticate, async (req, res) => {
     };
 
     console.log(user);
-    const ifUserExist = await Teacherdb.findBy(user);
+    const ifUserExist = await Teacherdb.findBy({ email });
     console.log(ifUserExist);
 
     if (ifUserExist.length > 0) {

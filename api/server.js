@@ -4,7 +4,8 @@ const cors = require("cors");
 const db = require("./queries");
 const passport = require("passport");
 const passportStrats = require("../passport");
-const stripe = require('../routes/stripe')
+
+const stripe = require("../routes/stripe");
 
 const knex = require("knex");
 const knexConfig = require("../knexfile.js");
@@ -16,6 +17,7 @@ const quizRouter = require("../routes/QuizRoute");
 const profileRouter = require("../routes/ProfileRoute");
 const authRouter = require("../routes/AuthRoute");
 const questionRouter = require("../routes/QuestionRoute");
+const folderRouter = require("../routes/folderRoute");
 
 const server = express();
 
@@ -24,7 +26,6 @@ server.use(helmet());
 server.use(cors());
 server.use(passport.initialize());
 server.use(passport.session());
-
 
 // sanity check
 server.get("/", (req, res) => {
@@ -37,6 +38,7 @@ server.use("/api/profile", profileRouter);
 server.use("/api/auth", authRouter);
 server.use("/api/stripe", stripe);
 server.use("/api/quest", questionRouter);
+server.use("/api/folder", folderRouter);
 
 // Test Endpoints here:
 server.get("/api/test", async (req, res) => {

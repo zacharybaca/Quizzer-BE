@@ -66,7 +66,7 @@ router.delete("/quizzes/:id", async (req, res) => {
     res.status(200).json(deleteUser);
   } catch (error) {
     res.status(500).json({
-      message: "Error deleting User"
+      message: error.message
     });
   }
 });

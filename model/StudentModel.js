@@ -20,16 +20,18 @@ function findBy(filter) {
   return db("students").where(filter);
 }
 
-async function add(user) {
-  const [id] = await db("students").insert(user);
-
-  return findById(id);
-}
-
 function findById(id) {
   return db("students")
     .where({ id })
     .first();
+}
+
+async function add(user) {
+  const [id] = await db("students")
+    .returning("id")
+    .insert(user);
+  console.log("students", id);
+  return findById(id);
 }
 
 function update(id, changes) {
@@ -38,10 +40,8 @@ function update(id, changes) {
     .update(changes);
 }
 
-async function addStudentToClass(access) {
-  const [id] = await db("student_teacher").insert(access);
-
-  return findById(id);
+function addStudentToClass(access) {
+  return db("student_teacher").insert(access);
 }
 
 function remove(id) {
