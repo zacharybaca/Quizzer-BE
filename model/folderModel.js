@@ -5,7 +5,10 @@ module.exports = {
   findById,
   createFolder,
   update,
-  remove
+  remove,
+  addQuizToFolder,
+  RemoveQuizFromFolder,
+  findByQuizId
 };
 
 async function findFoldersByTeacherId(teacherId) {
@@ -27,7 +30,9 @@ async function findFoldersByTeacherId(teacherId) {
 }
 
 async function createFolder(folderName) {
-  const [id] = await db("folders").insert(folderName);
+  const [id] = await db("folders")
+    .returning("id")
+    .insert(folderName);
 
   return findById(id).first();
 }
@@ -44,10 +49,28 @@ function findById(id) {
   return db("folders").where({ id });
 }
 
+function findByQuizId(id) {
+  return db("foldersToTeachers").where({ id });
+}
+
 async function remove(id) {
   const folder = await findById(id).first();
   await db("folders")
     .where({ id })
+    .del();
+
+  return folder;
+}
+
+function addQuizToFolder(data) {
+  return db("foldersToTeachers").insert(data);
+}
+
+async function RemoveQuizFromFolder(quiz_id) {
+  const folder = await findByQuizId(id).first();
+
+  await db("foldersToTeachers")
+    .where({ quiz_id })
     .del();
 
   return folder;

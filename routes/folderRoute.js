@@ -22,6 +22,24 @@ router.post("/add", async (req, res) => {
   }
 });
 
+router.post("/addquiz/:id", async (req, res) => {
+  try {
+    const { quiz_id, teacher_id } = req.body;
+
+    const ids = {
+      folder_id: req.params.body,
+      quiz_id,
+      teacher_id
+    };
+
+    const addQuizToAssignedFolder = await db.addQuizToFolder(ids);
+    console.log(addQuizToAssignedFolder);
+    res.status(201).json({ msg: "successfully added quiz to folder" });
+  } catch (err) {
+    res.status(500).json({ msg: err.message });
+  }
+});
+
 router.put("/update/:id", async (req, res) => {
   try {
     const updatedFolder = await db.update(req.params.id, req.body);
@@ -40,6 +58,19 @@ router.delete("/delete/:id", async (req, res) => {
     }
 
     res.status(202).json(deleteFolder);
+  } catch (err) {
+    res.status(500).json({ msg: err.message });
+  }
+});
+
+router.delete("/removequiz", async (req, res) => {
+  try {
+    const removequiz = await db.RemoveQuizFromFolder(req.body);
+    if (!removequiz) {
+      return res.status(404).json({ message: "folder not found." });
+    }
+
+    res.status(202).json(removequiz);
   } catch (err) {
     res.status(500).json({ msg: err.message });
   }
