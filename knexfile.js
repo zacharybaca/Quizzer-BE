@@ -14,6 +14,7 @@ module.exports = {
       directory: "./data/seeds/"
     },
     migrations: {
+      tableName: "dbmigrations",
       directory: "./data/migrations"
     }
   },
@@ -31,9 +32,11 @@ module.exports = {
     }
   },
   production: {
-    client: "sqlite3",
-    connection: "./data/quizzer.db3",
+    client: "pg",
+    connection: `${process.env.DATABASE_URL}`,
+    ssl: true,
     migrations: {
+      tableName: "dbmigrations",
       directory: "./data/migrations"
     },
     seeds: {

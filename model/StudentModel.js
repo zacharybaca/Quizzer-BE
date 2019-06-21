@@ -53,7 +53,7 @@ function remove(id) {
 async function showTeachers(id) {
   const teachers = await db("student_teacher")
     .join("students", "students.id", "student_teacher.student_id")
-    .join("teachers", "teachers.access_code", "student_teacher.access_code")
+    .join("teachers", "teachers.id", "student_teacher.teacher_id")
     .select(
       "teachers.id",
       "teachers.name",
