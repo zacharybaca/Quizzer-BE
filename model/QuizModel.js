@@ -52,15 +52,10 @@ async function remove(id) {
     .del();
 }
 
-async function getQuizByTeacher(id) {
-  const quizzes = await db("quizzes")
-    .join("questions", "questions.quiz_id", "quizzes.id")
+function getQuizByTeacher(id) {
+  return db("quizzes")
     .select("*")
     .where("quizzes.teacher_id", id);
-
-  return {
-    quizzes
-  };
 }
 
 async function getQuizByStudent(id) {
