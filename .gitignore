@@ -77,4 +77,5 @@ typings/
 .dynamodb/
 
 # database
-# *.db3
+*.db3
+
