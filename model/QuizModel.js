@@ -22,8 +22,11 @@ function findBy(filter) {
 }
 
 async function add(data) {
-  const [id] = await db("quizzes").insert(data);
+  const [id] = await db("quizzes")
+    .returning("id")
+    .insert(data);
 
+  console.log(id);
   return findById(id);
 }
 
@@ -39,8 +42,12 @@ function update(id, changes) {
     .update(changes);
 }
 
-function remove(id) {
-  return db("quizzes")
+async function remove(id) {
+  await db("questions")
+    .where("quiz_id", id)
+    .del();
+
+  return await db("quizzes")
     .where("id", id)
     .del();
 }

@@ -7,7 +7,8 @@ const jwtKey =
 
 // quickly see what this file exports
 module.exports = {
-  authenticate
+  authenticate,
+  authenticateAndroid
 };
 
 async function authenticate(req, res, next) {
@@ -20,5 +21,18 @@ async function authenticate(req, res, next) {
     next();
   } catch (err) {
     res.status(401).json({ err, msg: "token not valid" });
+  }
+}
+
+async function authenticateAndroid(req, res, next) {
+  // verify token
+  try {
+    const token = req.get("Authorization");
+    const auth = await axios(
+      `https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=${token}`
+    );
+    console.log(auth);
+  } catch (err) {
+    res.status(401).json({ msg: "token not valid" });
   }
 }

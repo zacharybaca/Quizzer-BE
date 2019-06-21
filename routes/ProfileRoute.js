@@ -114,13 +114,15 @@ router.post("/addstudent", async (req, res) => {
   try {
     const info = req.body;
     const { student_id } = req.body;
+    console.log(req);
     console.log("adding student to class", info);
 
     const add = await dbs.addStudentToClass(info);
 
     res.status(201).json(add);
-  } catch (err) {
-    res.status(500).json({ msg: err.message });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error);
   }
 });
 //Check
