@@ -20,18 +20,18 @@ function findBy(filter) {
   return db("students").where(filter);
 }
 
+function findById(id) {
+  return db("students")
+    .where({ id })
+    .first();
+}
+
 async function add(user) {
   const [id] = await db("students")
     .returning("id")
     .insert(user);
   console.log("students", id);
   return findById(id);
-}
-
-function findById(id) {
-  return db("students")
-    .where({ id })
-    .first();
 }
 
 function update(id, changes) {
