@@ -1,10 +1,20 @@
 const router = require("express").Router();
 const db = require("../model/folderModel");
 
+router.get("/", async (req, res) => {
+  try {
+    const allFolders = await db.findAll();
+    res.status(200).json(allFolders);
+  } catch (err) {
+    res.status(500).json({ msg: err.message });
+  }
+});
+
 //get folders by teacher idea
 router.get("/:id", async (req, res) => {
   try {
     const folder = await db.findFoldersByTeacherId(req.params.id);
+    console.log(folder);
     res.status(200).json(folder);
   } catch (error) {
     res.status(500).json(error.message);
@@ -24,13 +34,14 @@ router.post("/add", async (req, res) => {
 
 router.post("/addquiz/:id", async (req, res) => {
   try {
-    const { quiz_id, teacher_id } = req.body;
+    const { quiz_id } = req.body;
 
     const ids = {
-      folder_id: req.params.body,
-      quiz_id,
-      teacher_id
+      folder_id: req.params.id,
+      quiz_id
     };
+
+    console.log(ids);
 
     const addQuizToAssignedFolder = await db.addQuizToFolder(ids);
     console.log(addQuizToAssignedFolder);

@@ -8,26 +8,50 @@ module.exports = {
   remove,
   addQuizToFolder,
   RemoveQuizFromFolder,
-  findByQuizId
+  findByQuizId,
+  findAll
 };
 
-async function findFoldersByTeacherId(teacherId) {
-  const folderName = await db("foldersToTeachers as f")
-    .join("folders", "folders.id", "f.folder_id")
-    .select("folders.folder_name")
-    .where("f.teacher_id", teacherId)
-    .first();
+function findAll() {
+  return db("folders");
+}
 
-  const quizIds = await db("foldersToTeachers as f")
-    .join("folders", "folders.id", "f.folder_id")
-    .select("f.quiz_id")
+async function findFoldersByTeacherId(teacherId) {
+  console.log(teacherId);
+  // return db("folders")
+  //   .select("*")
+  //   .where("folders.teacher_id", teacherId);
+  // return (
+  //   db
+  //     .select("f.*", "q.quiz_name")
+  //     .from("folders as f")
+  //     // .join("foldersToTeachers as ft", "ft.folder_id", "f.id")
+  //     .join("quizzes as q", "q.teacher_id", Number(teacherId))
+  // );
+  const folders = await db("folders as f").where("f.teacher_id", teacherId);
+
+  const folderQuizzes = await db("folders as f")
+    .join("foldersToTeachers as ft", "ft.folder_id", "f.id")
+    .join("quizzes as q", "ft.quiz_id", "q.id")
     .where("f.teacher_id", teacherId);
 
-  return {
-    ...folderName,
-    quizIds
-  };
+  let result = { folders };
+  result.quizzes = folderQuizzes;
+
+  return result;
 }
+
+// async function findFoldersByTeacherId(teacherId) {
+//   const folderName = await db("foldersToTeachers as f")
+//     .join("folders", "folders.id", "f.folder_id")
+//     .select("*")
+//     .where("folders.teacher_id", teacherId)
+//     .first();
+//
+//   return {
+//     ...folderName
+//   };
+// }
 
 async function createFolder(folderName) {
   const [id] = await db("folders")

@@ -11,14 +11,6 @@ exports.up = function(knex, Promise) {
       .onUpdate("CASCADE");
 
     tbl
-      .integer("teacher_id")
-      .unsigned()
-      .references("id")
-      .inTable("teachers")
-      .onDelete("RESTRICT")
-      .onUpdate("CASCADE");
-
-    tbl
       .integer("quiz_id")
       .unsigned()
       .references("id")
