@@ -55,7 +55,7 @@ router.put("/quizzes/:id", async (req, res) => {
       res.status(422).json({ error: "Missing required fields" });
     }
   } catch (err) {
-    res.status(500).json({ error: "Database error" });
+    res.status(500).json({ error: err.message });
   }
 });
 

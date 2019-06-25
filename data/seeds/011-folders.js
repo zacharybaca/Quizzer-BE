@@ -8,6 +8,10 @@ exports.seed = function(knex, Promise) {
     {
       folder_name: "Science",
       teacher_id: 1
+    },
+    {
+      folder_name: "Science tests",
+      teacher_id: 2
     }
   ]);
 };
