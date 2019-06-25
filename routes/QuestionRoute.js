@@ -36,7 +36,7 @@ router.post("/question", (req, res) => {
     .then(user => {
       res.json(user);
     })
-    .catch(err => res.status(500).json(err));
+    .catch(err => res.status(500).json(err.message));
 });
 
 //Check
