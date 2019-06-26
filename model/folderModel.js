@@ -90,12 +90,8 @@ function addQuizToFolder(data) {
   return db("foldersToTeachers").insert(data);
 }
 
-async function RemoveQuizFromFolder(quiz_id) {
-  const folder = await findByQuizId(id).first();
-
-  await db("foldersToTeachers")
+function RemoveQuizFromFolder(quiz_id) {
+  return db("foldersToTeachers")
     .where({ quiz_id })
     .del();
-
-  return folder;
 }
