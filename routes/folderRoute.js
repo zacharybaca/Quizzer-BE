@@ -74,9 +74,10 @@ router.delete("/delete/:id", async (req, res) => {
   }
 });
 
-router.delete("/removequiz", async (req, res) => {
+router.delete("/removequiz/:id", async (req, res) => {
   try {
-    const removequiz = await db.RemoveQuizFromFolder(req.body);
+    const removequiz = await db.RemoveQuizFromFolder(req.params.id);
+    console.log(removequiz);
     if (!removequiz) {
       return res.status(404).json({ message: "folder not found." });
     }
