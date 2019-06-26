@@ -10,7 +10,8 @@ module.exports = {
   getQuizByTeacher,
   getQuizByStudent,
   getQuizWithQuestions,
-  correctAnswers
+  correctAnswers,
+  testCompleted
 };
 
 function find() {
@@ -19,6 +20,11 @@ function find() {
 
 function findBy(filter) {
   return db("quizzes").where(filter);
+}
+
+function testCompleted(data) {
+  console.log("testCompleted  func", data);
+  return db("studentToQuiz").insert(data);
 }
 
 async function add(data) {
@@ -66,12 +72,19 @@ async function getQuizByStudent(id) {
   const quizzes = await db("student_teacher")
     .join("teachers", "student_teacher.access_code", "teachers.access_code")
     .join("quizzes", "quizzes.teacher_id", "teachers.id")
-    .select("*")
+    // .join("studentToQuiz as sq", "sq.student_id", "student_teacher.student_id")
+    .select("student_teacher.*", "quizzes.*", "teachers.name")
     .where("student_teacher.student_id", id);
+
+  const completedQuizzes = await db("studentToQuiz as sq")
+    .join("quizzes", "sq.quiz_id", "quizzes.id")
+    .select("sq.quiz_id", "quizzes.*")
+    .where("sq.student_id", id);
 
   return {
     student,
-    quizzes
+    quizzes,
+    completedQuizzes
   };
 }
 
