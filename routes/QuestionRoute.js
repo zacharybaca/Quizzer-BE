@@ -55,7 +55,7 @@ router.delete("/question/:id", async (req, res) => {
     res.status(200).json(deleteQuest);
   } catch (error) {
     res.status(500).json({
-      message: "Error deleting Question"
+      message: err.message
     });
   }
 });
