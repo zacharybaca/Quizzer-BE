@@ -4,10 +4,10 @@ exports.up = function(knex, Promise) {
       tbl.increments();
 
       tbl
-        .integer("student_id")
+        .integer("teacher_id")
         .unsigned()
         .references("id")
-        .inTable("student_teacher")
+        .inTable("teacher")
         .onDelete("RESTRICT")
         .onUpdate("CASCADE")
 
