@@ -21,9 +21,7 @@ router.post("/teacher/login", authenticate, async (req, res) => {
       access_code
     };
 
-    console.log(user);
     const ifUserExist = await Teacherdb.findBy({ email });
-    console.log(ifUserExist);
 
     if (ifUserExist.length > 0) {
       console.log("user exists");
@@ -34,7 +32,6 @@ router.post("/teacher/login", authenticate, async (req, res) => {
 
     return res.status(201).json(addUser);
   } catch (err) {
-    console.log(err.message);
     res.status(500).json({ message: err.message });
   }
 });
@@ -51,9 +48,7 @@ router.post("/student/login", authenticate, async (req, res) => {
       role
     };
 
-    console.log(user);
     const ifUserExist = await Studentdb.findBy(user);
-    console.log(ifUserExist);
 
     if (ifUserExist.length > 0) {
       console.log("user exists");
@@ -64,8 +59,7 @@ router.post("/student/login", authenticate, async (req, res) => {
 
     return res.status(201).json(addUser);
   } catch (error) {
-    console.log(error);
-    res.status(500).json({ error });
+    res.status(500).json({ msg: error.message });
   }
 });
 

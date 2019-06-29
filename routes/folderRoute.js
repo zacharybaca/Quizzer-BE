@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const folder = await db.findFoldersByTeacherId(req.params.id);
-    console.log(folder);
+
     res.status(200).json(folder);
   } catch (error) {
     res.status(500).json(error.message);
@@ -23,9 +23,8 @@ router.get("/:id", async (req, res) => {
 
 router.post("/add", async (req, res) => {
   try {
-    console.log(req.body);
     const newFolder = await db.createFolder(req.body);
-    console.log(newFolder);
+
     res.status(201).json(newFolder);
   } catch (err) {
     res.status(500).json({ msg: err.message });
@@ -41,10 +40,8 @@ router.post("/addquiz/:id", async (req, res) => {
       quiz_id
     };
 
-    console.log(ids);
-
     const addQuizToAssignedFolder = await db.addQuizToFolder(ids);
-    console.log(addQuizToAssignedFolder);
+
     res.status(201).json({ msg: "successfully added quiz to folder" });
   } catch (err) {
     res.status(500).json({ msg: err.message });
