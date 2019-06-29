@@ -4,6 +4,10 @@ exports.up = function(knex, Promise) {
     tbl.integer("class_average");
     tbl.string("quiz_name");
     tbl.string("description");
+    tbl
+      .boolean("assigned")
+      .notNullable()
+      .defaultTo(false);
 
     tbl
       .integer("teacher_id")

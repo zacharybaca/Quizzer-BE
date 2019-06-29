@@ -23,7 +23,6 @@ function findBy(filter) {
 }
 
 function testCompleted(data) {
-  console.log("testCompleted  func", data);
   return db("studentToQuiz").insert(data);
 }
 
@@ -32,7 +31,6 @@ async function add(data) {
     .returning("id")
     .insert(data);
 
-  console.log(id);
   return findById(id);
 }
 
