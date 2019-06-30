@@ -21,7 +21,6 @@ async function add(data) {
   const [id] = await db("questions")
     .returning("id")
     .insert(data);
-  console.log("questions", id);
   return findById(id);
 }
 
