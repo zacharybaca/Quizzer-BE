@@ -113,15 +113,24 @@ router.delete("/teacher/:id", async (req, res) => {
 router.post("/addstudent", async (req, res) => {
   try {
     const info = req.body;
-    const { student_id } = req.body;
-    console.log(req);
-    console.log("adding student to class", info);
+    const { student_id, access_code } = req.body;
+    const data = {
+      access_code,
+      student_id
+    };
+
+    const ifUserAddedQuizBefore = await dbs.findByAccessCode(data);
+    console.log(ifUserAddedQuizBefore);
+
+    if (ifUserAddedQuizBefore.length > 0) {
+      return res.status(500).json({ msg: "added quiz before" });
+    }
 
     const add = await dbs.addStudentToClass(info);
 
     res.status(201).json(add);
   } catch (error) {
-    console.log(error);
+    console.log(error.message);
     res.status(500).json(error);
   }
 });

@@ -9,7 +9,8 @@ module.exports = {
   update,
   showStudents,
   showTeachers,
-  addStudentToClass
+  addStudentToClass,
+  findByAccessCode
 };
 
 function find() {
@@ -41,6 +42,10 @@ function update(id, changes) {
 
 function addStudentToClass(access) {
   return db("student_teacher").insert(access);
+}
+
+function findByAccessCode(filter) {
+  return db("student_teacher").where(filter);
 }
 
 function remove(id) {
