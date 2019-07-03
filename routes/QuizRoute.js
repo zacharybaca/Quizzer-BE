@@ -27,11 +27,11 @@ router.get("/quizzes/:id", (req, res) => {
 router.post("/quizzes", async (req, res) => {
   try {
     const data = req.body;
-    console.log(data.quiz);
+
     if (data.quiz.teacher_id) {
       const result = await db.add(data.quiz);
       //console.log('result:', result)
-      console.log(result);
+
       res.status(201).json(result);
     } else {
       res.status(422).json({ error: "Missing data" });
@@ -64,7 +64,7 @@ router.put("/quizzes/:id", async (req, res) => {
 router.delete("/quizzes/:id", async (req, res) => {
   try {
     const ifQuizIsInFolder = await folderDb.findByQuizId(req.params.id);
-    console.log(ifQuizIsInFolder);
+
     if (ifQuizIsInFolder) {
       await folderDb.RemoveQuizFromFolder(req.params.id);
     }
@@ -110,7 +110,6 @@ router.get("/teachers/:id/quizzes", async (req, res) => {
   try {
     const quizzes = await db.getQuizByTeacher(req.params.id);
 
-    console.log(quizzes);
     res.status(200).json(quizzes);
   } catch (err) {
     res.status(500).json({ msg: err.message });
@@ -120,7 +119,6 @@ router.get("/teachers/:id/quizzes", async (req, res) => {
 router.get("/student/:id/quizzes", async (req, res) => {
   try {
     const quizzes = await db.getQuizByStudent(req.params.id);
-    console.log("getting quizzes by id", quizzes);
 
     res.status(200).json(quizzes);
   } catch (err) {
@@ -131,8 +129,6 @@ router.get("/student/:id/quizzes", async (req, res) => {
 router.post("/student/completedtest", async (req, res) => {
   try {
     const quizzes = await db.testCompleted(req.body);
-    console.log("body", req.body);
-    console.log("completed test", quizzes);
 
     res.status(200).json(quizzes);
   } catch (err) {
