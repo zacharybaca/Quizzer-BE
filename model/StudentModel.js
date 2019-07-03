@@ -30,7 +30,6 @@ async function add(user) {
   const [id] = await db("students")
     .returning("id")
     .insert(user);
-  console.log("students", id);
   return findById(id);
 }
 

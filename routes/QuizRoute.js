@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const folderDb = require("../model/folderModel");
 
 const db = require("../model/QuizModel");
 
@@ -62,6 +63,11 @@ router.put("/quizzes/:id", async (req, res) => {
 //Check
 router.delete("/quizzes/:id", async (req, res) => {
   try {
+    const ifQuizIsInFolder = await folderDb.findByQuizId(req.params.id);
+    console.log(ifQuizIsInFolder);
+    if (ifQuizIsInFolder) {
+      await folderDb.RemoveQuizFromFolder(req.params.id);
+    }
     const deleteUser = await db.remove(req.params.id);
     res.status(200).json(deleteUser);
   } catch (error) {
