@@ -11,7 +11,9 @@ module.exports = {
   getQuizByStudent,
   getQuizWithQuestions,
   correctAnswers,
-  testCompleted
+  testCompleted,
+  deleteStudentToQuiz,
+  findByStudentAndQuiz
 };
 
 function find() {
@@ -24,6 +26,16 @@ function findBy(filter) {
 
 function testCompleted(data) {
   return db("studentToQuiz").insert(data);
+}
+
+function findByStudentAndQuiz(filter) {
+  return db("studentToQuiz").where(filter);
+}
+
+function deleteStudentToQuiz(quiz_id) {
+  db("studentToQuiz")
+    .where({ quiz_id })
+    .del();
 }
 
 async function add(data) {
