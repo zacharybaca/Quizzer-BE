@@ -88,7 +88,7 @@ async function getQuizByStudent(id) {
 
   const completedQuizzes = await db("studentToQuiz as sq")
     .join("quizzes", "sq.quiz_id", "quizzes.id")
-    .select("sq.quiz_id", "quizzes.*")
+    .select("sq.quiz_id", "sq.completed", "quizzes.*")
     .where("sq.student_id", id);
 
   return {
