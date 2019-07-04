@@ -33,7 +33,7 @@ function findByStudentAndQuiz(quiz_id) {
 }
 
 function deleteStudentToQuiz(quiz_id) {
-  db("studentToQuiz")
+  return db("studentToQuiz")
     .where({ quiz_id })
     .del();
 }
