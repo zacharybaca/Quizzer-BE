@@ -28,8 +28,8 @@ function testCompleted(data) {
   return db("studentToQuiz").insert(data);
 }
 
-function findByStudentAndQuiz(filter) {
-  return db("studentToQuiz").where(filter);
+function findByStudentAndQuiz(quiz_id) {
+  return db("studentToQuiz").where({ quiz_id });
 }
 
 function deleteStudentToQuiz(quiz_id) {

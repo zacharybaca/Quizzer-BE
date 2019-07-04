@@ -63,7 +63,17 @@ router.put("/quizzes/:id", async (req, res) => {
 //Check
 router.delete("/quizzes/:id", async (req, res) => {
   try {
+    const ifStudentIsAssignedToQuiz = await db.findByStudentAndQuiz(
+      req.params.id
+    );
+
     const ifQuizIsInFolder = await folderDb.findByQuizId(req.params.id);
+
+    console.log(ifStudentIsAssignedToQuiz);
+
+    if (ifStudentIsAssignedToQuiz) {
+      await db.deleteStudentToQuiz(req.params.id);
+    }
 
     if (ifQuizIsInFolder) {
       await folderDb.RemoveQuizFromFolder(req.params.id);
@@ -71,6 +81,7 @@ router.delete("/quizzes/:id", async (req, res) => {
     const deleteUser = await db.remove(req.params.id);
     res.status(200).json(deleteUser);
   } catch (error) {
+    console.log(error);
     res.status(500).json({
       message: error.message
     });
