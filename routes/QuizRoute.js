@@ -71,7 +71,7 @@ router.delete("/quizzes/:id", async (req, res) => {
 
     console.log(ifStudentIsAssignedToQuiz);
 
-    if (ifStudentIsAssignedToQuiz) {
+    if (ifStudentIsAssignedToQuiz.length > 0) {
       await db.deleteStudentToQuiz(req.params.id);
     }
 
