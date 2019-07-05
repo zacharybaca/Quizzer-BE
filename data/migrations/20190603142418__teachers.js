@@ -5,6 +5,10 @@ exports.up = function(knex, Promise) {
     tbl.string("username");
     tbl.string("email");
     tbl.string("role");
+    tbl
+      .boolean("isPaid")
+      .notNullable()
+      .defaultTo(false);
 
     tbl.integer("access_code");
   });
